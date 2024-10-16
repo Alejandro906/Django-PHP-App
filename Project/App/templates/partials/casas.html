@@ -2,6 +2,9 @@
     <div class="house-container">
         {% with casa.casa_images.first as image%}
         <img src="{{image.image.url}}" class="house-image">
+        {%if casa.recommended %}
+        <span class="span-recommend">Recomendación del viajero</span>
+        {%endif%}
         {% endwith %}
         <div class="house-contianer-title">
             <span>{{ casa.city }}, {{ casa.country }}</span>
@@ -14,7 +17,7 @@
             <span>Gestionado por una empresa</span>
         </div>
         <div class="rooms-container">
-            <span>{{casa.rooms}} rooms</span>
+            <span>{{casa.rooms}} habitaciones</span>
         </div>
         <div class="date_uploaded-container">
             <span>{{casa.date_uploaded}}</span>

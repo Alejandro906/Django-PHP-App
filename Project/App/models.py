@@ -27,6 +27,7 @@ class Casa(models.Model):
     AC = models.BooleanField(default=False)
     wifi = models.BooleanField(default=False)
     date_uploaded = models.DateTimeField(auto_now_add=True , null = True, blank=True)
+    recommended = models.BooleanField(default=False, null=True, blank=True)
 
     def __str__(self):
         return f"casa en {self.country} con direccion {self.address}"

@@ -12,7 +12,7 @@
         border-top: 1px solid #9b9b9b;
         height: 50px;
         justify-content: space-around;
-        font-size: 14px;
+        font-size: 13px;
         align-items: center;
         position: fixed;
         bottom: 0;
@@ -21,21 +21,22 @@
         background-color: white;
         font-family: Nunito Sans;
     }
-    .right-section{
+    .left-section{
         display: flex;
         justify-content: space-between;
         width: 100%;
         max-width: 575px;
         color: #666666;
     }
-    .left-section{
+    .right-section{
         display: flex;
         justify-content: space-between;
         width: 100%;
-        max-width: 275px;
+        max-width: 300px;
         font-weight: bold;
         color: black;
         align-items: center;
+
     }
     .right-section>span, .left-section>span{
         cursor: pointer;
@@ -45,10 +46,30 @@
         gap: 5px;
         align-items: center;
     }
+    .world-icon-container>svg{
+        padding: 0;
+    }
+    .currency-container{
+        display: flex;
+        gap: 3px;
+        align-items: center;
+    }
+    .ayuda-div{
+        display: flex;
+        gap: 5px;
+        align-items: center;
+        cursor: pointer;
+    }
+    .ayuda-div:hover{
+        text-decoration: dashed;
+    }
+    .ayuda-div>svg{
+        padding: 0;
+    }
 </style>
 <body>
     <div class="footer">
-        <div class="right-section">
+        <div class="left-section">
             <span>© 2024 BnB Housing, Inc.</span>
             <span>·</span>
             <span>Privacidad</span>
@@ -59,14 +80,18 @@
             <span>·</span>
             <span>Datos de la empresa</span>
         </div>
-        <div class="left-section">
+        <div class="right-section">
             <div class="world-icon-container">
                 <svg xmlns="http://www.w3.org/2000/svg"  width="17"  height="17"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-world"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M3.6 9h16.8" /><path d="M3.6 15h16.8" /><path d="M11.5 3a17 17 0 0 0 0 18" /><path d="M12.5 3a17 17 0 0 1 0 18" /></svg>
                 <span>Español (ES)</span>
             </div>
-            <div class="world-icon-container">
+            <div class="currency-container">
                 <span>€</span>
                 <span>EUR</span>
+            </div>
+            <div class="ayuda-div">
+                <span class="ayuda-recursos">Ayuda y recursos</span>
+                <svg  xmlns="http://www.w3.org/2000/svg"  width="17"  height="17"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-down"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg>
             </div>
         </div>
     </div>
