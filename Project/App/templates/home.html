@@ -373,6 +373,7 @@
             <div id="data-container" hx-get="{% url 'get_houses' %}?page=1" hx-trigger="load" hx-swap="beforeend" hx-target="#content-container" hx-indicator="#loader"></div>
         </div>
         <div id="loader"></div>
+        {% include 'partials/footer.html' %}
     </div>
 </body>
 </html>

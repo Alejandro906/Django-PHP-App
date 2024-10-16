@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .footer{
+        display: flex;
+        width: 100%;
+        border-top: 1px solid #9b9b9b;
+        height: 50px;
+        justify-content: space-around;
+        font-size: 14px;
+        align-items: center;
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        background-color: white;
+        font-family: Nunito Sans;
+    }
+    .right-section{
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        max-width: 575px;
+        color: #666666;
+    }
+    .left-section{
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        max-width: 275px;
+        font-weight: bold;
+        color: black;
+        align-items: center;
+    }
+    .right-section>span, .left-section>span{
+        cursor: pointer;
+    }
+    .world-icon-container{
+        display: flex;
+        gap: 5px;
+        align-items: center;
+    }
+</style>
+<body>
+    <div class="footer">
+        <div class="right-section">
+            <span>© 2024 BnB Housing, Inc.</span>
+            <span>·</span>
+            <span>Privacidad</span>
+            <span>·</span>
+            <span>Condiciones</span>
+            <span>·</span>
+            <span>Mapa del sitio</span>
+            <span>·</span>
+            <span>Datos de la empresa</span>
+        </div>
+        <div class="left-section">
+            <div class="world-icon-container">
+                <svg xmlns="http://www.w3.org/2000/svg"  width="17"  height="17"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-world"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M3.6 9h16.8" /><path d="M3.6 15h16.8" /><path d="M11.5 3a17 17 0 0 0 0 18" /><path d="M12.5 3a17 17 0 0 1 0 18" /></svg>
+                <span>Español (ES)</span>
+            </div>
+            <div class="world-icon-container">
+                <span>€</span>
+                <span>EUR</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
