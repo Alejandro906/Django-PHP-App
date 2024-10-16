@@ -5,9 +5,10 @@ from django.conf import settings
 
 urlpatterns = [
     path('form/', views.first_form, name = 'form'),
-    path('login-register/', views.login_register, name = 'login-register'),
+    path('login_form/', views.login_form, name = 'login_form'),
     path('get_houses/', views.get_houses, name = 'get_houses'),
-    path('', views.home, name = 'home')
+    path('', views.home, name = 'home'),
+    path('get_house/<int:id>', views.get_house, name = 'get_house')
 ]
 
 

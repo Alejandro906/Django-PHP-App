@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Bnb Housing</title>
+    <link rel="icon" href="{% static 'logo.png' %}" type="image/png" class="tab-logo">
     <script src="https://unpkg.com/htmx.org@2.0.3" integrity="sha384-0895/pl2MU10Hqc6jd4RvrthNlDiE9U1tWmX7WRESftEDRosgxNsQG/Ze9YMRzHq" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,6 +14,11 @@
     <style>
         html{
             position: relative;
+        }
+        .tab-logo{
+            height: 20px;
+            width: 20px;
+            object-fit: cover;
         }
         #loader{
             width: 70px;
@@ -59,7 +65,6 @@
             justify-content: space-between;
             align-items: center;
             font-family: Nunito Sans;
-            margin: 0px 40px;
         }
         .logo{
             width: 120px;
@@ -243,6 +248,8 @@
             width: 100%;
             cursor: pointer;
             position: relative;
+            text-decoration: none; 
+            color: inherit;
         }
         .house-contianer-title{
             display: flex;
@@ -287,19 +294,29 @@
         }
         .login-form-container{
             position: absolute;
-            width: 300px;
-            right: 0;
-            top: 20px;
+            width: 240px;
+            right: 47px;
+            top: 76px;
             height: 300px;
             z-index: 10;
-            background-color: #6a6a6a;
+            background-color: white;
             display: flex;
             justify-content: center;
             align-items: center;
-            transition: all 1s ease-in-out;
+            border-radius: 6px;
+            box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.25);
+            transition: all 0.3s ease-in-out;
         }
         .desactive-login-form{
             top: -400px;
+        }
+        .x-button{
+            position: absolute;
+            top: -18px;
+            left: -18px;
+            width: 32px;
+            height: 32px;
+
         }
         .span-recommend{
             font-family: Nunito Sans;
@@ -315,11 +332,11 @@
         }
     </style>
 </head>
+{% for msg in messages%}
+    <p>msg</p>
+{%endfor%}
 <div class="login-form-container desactive-login-form">
-    <form action="" method="get">
-        <input type="text" placeholder="email">
-        <input type="text" placeholder="password">
-    </form>
+    <div id="form-container"></div>
 </div>
 <body>
     <div class="main-container">
@@ -332,7 +349,7 @@
                     <span class="center-text">Alojamiento</span>
                     <span class="center-text">Experiencias</span>
                 </div>
-                <div class="user-profile-container" _="on click toggle .desactive-login-form on .login-form-container">
+                <div class="user-profile-container" _="on click toggle .desactive-login-form on .login-form-container" hx-get="{% url 'login_form'%}" hx-target="#form-container">
                     <svg class="menu-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M0 96C0 78.3 14.3 64 32 64l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 128C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 288c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32L32 448c-17.7 0-32-14.3-32-32s14.3-32 32-32l384 0c17.7 0 32 14.3 32 32z"/></svg>
                     <svg class="user-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#828487" d="M399 384.2C376.9 345.8 335.4 320 288 320l-64 0c-47.4 0-88.9 25.8-111 64.2c35.2 39.2 86.2 63.8 143 63.8s107.8-24.7 143-63.8zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm256 16a72 72 0 1 0 0-144 72 72 0 1 0 0 144z"/></svg>
                 </div>

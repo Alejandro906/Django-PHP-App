@@ -56,5 +56,9 @@ def login_form(request):
             return render(request, 'partials/login_form.html', {'form':form})
     
     return render(request, 'partials/login_form.html', {'form':form})
+
+def get_house(request, id):
+    casa = Casa.objects.get(id = id)
+    return render(request, 'vivienda.html', {'casa':casa})
         
 
