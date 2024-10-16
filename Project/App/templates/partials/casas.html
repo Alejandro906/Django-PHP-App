@@ -1,0 +1,32 @@
+{% for casa in casas %}
+    <div class="house-container">
+        {% with casa.casa_images.first as image%}
+        <img src="{{image.image.url}}" class="house-image">
+        {% endwith %}
+        <div class="house-contianer-title">
+            <span>{{ casa.city }}, {{ casa.country }}</span>
+            <div class="rating-container">
+                <svg xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="currentColor"  class="icon icon-tabler icons-tabler-filled icon-tabler-star"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M8.243 7.34l-6.38 .925l-.113 .023a1 1 0 0 0 -.44 1.684l4.622 4.499l-1.09 6.355l-.013 .11a1 1 0 0 0 1.464 .944l5.706 -3l5.693 3l.1 .046a1 1 0 0 0 1.352 -1.1l-1.091 -6.355l4.624 -4.5l.078 -.085a1 1 0 0 0 -.633 -1.62l-6.38 -.926l-2.852 -5.78a1 1 0 0 0 -1.794 0l-2.853 5.78z" /></svg>
+                <span class="rating-number">{{ casa.rating }}</span>
+            </div>
+        </div>
+        <div class="gestion-container">
+            <span>Gestionado por una empresa</span>
+        </div>
+        <div class="rooms-container">
+            <span>{{casa.rooms}} rooms</span>
+        </div>
+        <div class="date_uploaded-container">
+            <span>{{casa.date_uploaded}}</span>
+        </div>
+        {% if forloop.last and casas.has_next%}
+        <div hx-get="{% url 'get_houses' %}?page={{ casas.next_page_number }}"
+            hx-trigger="intersect once"
+            hx-swap="beforeend"
+            hx-indicator="#loader"
+            hx-target="#content-container"
+            class="div-to-load-more">
+        </div>
+        {% endif %}
+    </div>
+{% endfor %}
