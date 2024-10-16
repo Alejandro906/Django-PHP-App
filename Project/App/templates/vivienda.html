@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vivienda</title>
+</head>
+<style>
+    .vivienda-main-container{
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        background-color: #e1e1e1;
+    }
+    .vivienda-container{
+        width: 100%;
+        max-width: 95%;
+        background-color: white;
+        z-index: 2;
+        box-shadow: 4px 0px 30px rgba(0, 0, 0, 0.25);
+        display: flex;
+        gap: 30px;
+    }
+    .left-container-viv{
+        margin-left: 30px;
+        flex: 2;
+        display: flex;
+        flex-direction: column;
+    }
+    .right-container-viv{
+        flex: 1;
+        margin-right: 30px;
+        display: flex;
+        justify-content: center;
+    }
+    .location-container{
+        display: flex;
+        gap: 5px;
+        align-items: center;
+        justify-content: start;
+    }
+    .image-div{
+        width: 100%;
+        background-color: #efefef;
+        height: 430px;
+        display: flex;
+        justify-content: center;
+        margin-top: 15px;
+    }
+    .box-image{
+        width: 70%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .mail-container{
+        width: 290px;
+        padding: 20px;
+        background-color: #f9f9f9;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border: 1px solid #e0e0e0;
+        border-radius: 10px;
+        box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+        height: fit-content;
+        position: sticky;
+        margin-top: 112px;
+    }
+    .mail-container h2 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+    .input-mail{
+        width: 90%;
+        padding: 10px;
+        font-size: 1rem;
+        border-radius: 5px;
+        border: 1px solid #d0d0d0;
+        background-color: #f0f0f0;
+        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+        color: #555;
+    }
+    .contact-button {
+        width: 97%;
+        padding: 10px;
+        margin-top: 10px;
+        background-color: #68c695;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 1rem;
+        cursor: pointer;
+    }
+</style>
+<body>
+    <div class="vivienda-main-container">
+        <div class="vivienda-container">
+            <div class="left-container-viv">
+                <h1>Precioso piso de ejemplo para pruebas</h1>
+                <div class="location-container">
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="18"  height="18"  viewBox="0 0 24 24"  fill="currentColor"  class="icon icon-tabler icons-tabler-filled icon-tabler-map-pin"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M18.364 4.636a9 9 0 0 1 .203 12.519l-.203 .21l-4.243 4.242a3 3 0 0 1 -4.097 .135l-.144 -.135l-4.244 -4.243a9 9 0 0 1 12.728 -12.728zm-6.364 3.364a3 3 0 1 0 0 6a3 3 0 0 0 0 -6z" /></svg>
+                    <span> Calle de O'Donnell, 24, Madrid, None </span>
+                </div>
+                <div class="image-div">
+                    <img class="box-image" src="https://a0.muscache.com/im/pictures/b56792ae-ba05-4aed-a786-1fa8db230b02.jpg?im_w=720" alt="">
+                </div>
+            </div>
+            <div class="right-container-viv">
+                <div class="mail-container">
+                    <h2>Enviar un mensaje</h2>
+                    <input class="input-mail" placeholder="Hola, ¿podrían enviarme más información de este inmueble?"></input>
+                    <button class="contact-button">Contacto</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
