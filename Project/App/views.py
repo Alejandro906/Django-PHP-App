@@ -9,7 +9,8 @@ import time
 # Create your views here.
 
 def home(request):
-     return render(request, 'home.html', {})
+     form = LoginForm()
+     return render(request, 'home.html', {'form' : form})
 
 def login_register(request):
     return render(request, 'login_register.html', {})
