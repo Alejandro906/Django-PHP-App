@@ -4,176 +4,120 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vivienda</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet">
-</head>
-<style>
-    .vivienda-main-container{
-        display: flex;
-        justify-content: center;
-        width: 100%;
-        background-color: #e1e1e1;
-    }
-    .vivienda-container{
-        width: 100%;
-        max-width: 95%;
-        background-color: white;
-        z-index: 2;
-        box-shadow: 4px 0px 30px rgba(0, 0, 0, 0.25);
-        display: flex;
-        gap: 30px;
-    }
-    .left-container-viv{
-        margin-left: 30px;
-        flex: 2;
-        display: flex;
-        flex-direction: column;
-    }
-    .right-container-viv{
-        flex: 1;
-        display: flex;
-        justify-content: center;
-        position: relative;
-    }
-    .location-container{
-        display: flex;
-        gap: 5px;
-        align-items: center;
-        justify-content: start;
-    }
-    .image-div{
-        width: 100%;
-        background-color: #efefef;
-        height: 430px;
-        display: flex;
-        justify-content: center;
-        margin-top: 15px;
-        position: relative;
-    }
-    .box-image{
-        width: 70%;
-        height: 100%;
-        object-fit: cover;
-    }
-    .mail-container{
-        width: 290px;
-        padding: 20px;
-        background-color: #f9f9f9;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        border: 1px solid #e0e0e0;
-        border-radius: 10px;
-        box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
-        height: max-content;
-        position: sticky;
-        top: 20px;
-        gap: 10px;
-    }
-    .mail-container h2 {
-        font-size: 1.25rem;
-        font-weight: bold;
-        margin-bottom: 10px;
-        margin-top: 0;
-    }
-    .input-mail{
-        max-width: 90%;
-        min-width: 90%;
-        font-size: 1rem;
-        border-radius: 5px;
-        border: 1px solid #d0d0d0;
-        background-color: #f0f0f0;
-        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
-        color: #555;
-        max-height: 120px;
-        min-height: 120px;
-        padding: 5px;
-        padding-right: 10px;
-    }
-    .contact-button {
-        width: 97%;
-        padding: 10px;
-        margin-top: 10px;
-        background-color: rgb(164, 255, 90);
-        color: black;
-        border: none;
-        border-radius: 5px;
-        font-size: 1rem;
-        cursor: pointer;
-        font-family: Nunito Sans;
-
-    }
-    body{
-        font-family: Nunito Sans;
-    }
-    .left-slider-svg{
-        position: absolute;
-        top: 43%;
-        left: 25px;
-        cursor: pointer;
-    }
-    .right-slider-svg{
-        position: absolute;
-        top: 45%;
-        right: 25px;
-        cursor: pointer;
-    }
-</style>
-<script>
-    // Define the images array with the URLs
-    const images = [
-        "{{casa.casa_images.first.image.url}}",
-        "{{casa.casa_images.second.image.url}}",
-        "{{casa.casa_images.third.image.url}}"
-    ];
-    
-    let index = 0; // Initialize index
-    
-    const handleSlider = (direction) => {
-        if (direction === "r") {
-            index = (index === images.length - 1) ? 0 : index + 1;
-        } else {
-            index = (index === 0) ? images.length - 1 : index - 1;
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000&display=swap">
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+    <style>
+        .vivienda-main-container {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            background-color: #e1e1e1;
         }
-        
-        // Update the image source
-        document.querySelector('.box-image').src = images[index];
-    }
-</script>
+        .vivienda-container {
+            width: 100%;
+            max-width: 95%;
+            background-color: white;
+            box-shadow: 4px 0px 30px rgba(0, 0, 0, 0.25);
+            display: flex;
+            gap: 30px;
+        }
+        .left-container-viv {
+            margin-left: 30px;
+            flex: 2;
+            display: flex;
+            flex-direction: column;
+        }
+        .right-container-viv {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+        .location-container {
+            display: flex;
+            gap: 5px;
+            align-items: center;
+        }
+        .carousel {
+            background: #efefef;
+            margin-top: 15px;
+        }
+        .carousel-cell {
+            width: 100%;
+            height: 430px;
+            background: white;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .carousel-cell img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .mail-container {
+            width: 290px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 20px;
+            gap: 10px;
+            height: min-content;
+        }
+        .mail-container h2 {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            margin-top: 0;
+        }
+        .input-mail {
+            width: 90%;
+            height: 120px;
+            border-radius: 5px;
+            border: 1px solid #d0d0d0;
+            padding: 5px;
+            font-size: 1rem;
+        }
+        .contact-button {
+            width: 90%;
+            padding: 10px;
+            background-color: rgb(164, 255, 90);
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+        body {
+            font-family: 'Nunito Sans', sans-serif;
+        }
+    </style>
+</head>
 <body>
     <div class="vivienda-main-container">
         <div class="vivienda-container">
             <div class="left-container-viv">
-                <h1>{{casa.title}}</h1>
+                <h1>{{ casa.title }}</h1>
                 <div class="location-container">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" class="icon icon-tabler icons-tabler-filled icon-tabler-map-pin">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                         <path d="M18.364 4.636a9 9 0 0 1 .203 12.519l-.203 .21l-4.243 4.242a3 3 0 0 1 -4.097 .135l-.144 -.135l-4.244 -4.243a9 9 0 0 1 12.728 -12.728zm-6.364 3.364a3 3 0 1 0 0 6a3 3 0 0 0 0 -6z" />
                     </svg>
-                    <span>{{casa.address}}</span>
+                    <span>{{ casa.address }}</span>
                 </div>
-                <div class="image-div">
-                    <!-- Slider buttons -->
-                    <span onclick="handleSlider('l')" class="left-slider-svg">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" viewBox="0 0 24 24" fill="currentColor" class="icon icon-tabler icons-tabler-filled icon-tabler-circle-arrow-left">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                            <path d="M12 2a10 10 0 0 1 .324 19.995l-.324 .005l-.324 -.005a10 10 0 0 1 .324 -19.995zm.707 5.293a1 1 0 0 0 -1.414 0l-4 4a1.048 1.048 0 0 0 -.083 .094l-.064 .092l-.052 .098l-.044 .11l-.03 .112l-.017 .126l-.003 .075l.004 .09l.007 .058l.025 .118l.035 .105l.054 .113l.043 .07l.071 .095l.054 .058l4 4l.094 .083a1 1 0 0 0 1.32 -1.497l-2.292 -2.293h5.585l.117 -.007a1 1 0 0 0 -.117 -1.993h-5.586l2.293 -2.293l.083 -.094a1 1 0 0 0 -.083 -1.32z"/>
-                        </svg>
-                    </span>
-
-                    <!-- Image element that will change -->
-                    <img class="box-image" src="{{casa.casa_images.first.image.url}}" alt="">
-
-                    <span onclick="handleSlider('r')" class="right-slider-svg">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" viewBox="0 0 24 24" fill="currentColor" class="icon icon-tabler icons-tabler-filled icon-tabler-circle-arrow-right">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                            <path d="M12 2l.324 .005a10 10 0 1 1 -.648 0l.324 -.005zm.613 5.21a1 1 0 0 0 -1.32 1.497l2.291 2.293h-5.584l-.117 .007a1 1 0 0 0 .117 1.993h5.584l-2.291 2.293l-.083 .094a1 1 0 0 0 1.497 1.32l4 -4l.073 -.082l.064 -.089l.062 -.113l.044 -.11l.03 -.112l.017 -.126l.003 -.075l-.007 -.118l-.029 -.148l-.035 -.105l-.054 -.113l-.071 -.111a1.008 1.008 0 0 0 -.097 -.112l-4 -4z"/>
-                        </svg>
-                    </span>
+                <div class="carousel" data-flickity='{ "wrapAround": true, "autoPlay": 2000 }'>
+                    {% for casa_img in casa.casa_images.all %}
+                        <div class="carousel-cell">
+                            <img src="{{ casa_img.image.url }}" alt="Image {{ forloop.counter }}">
+                        </div>
+                    {% endfor %}
                 </div>
+                <p>hello</p>
             </div>
-
             <div class="right-container-viv">
                 <div class="mail-container">
                     <h2>Enviar un mensaje</h2>
@@ -183,5 +127,7 @@
             </div>
         </div>
     </div>
+
+    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
 </body>
 </html>
