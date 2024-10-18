@@ -53,6 +53,7 @@ def login_form(request):
             messages.success(request, 'Bienvenido')
             return redirect('home')
         else:
+            messages.error(request, 'Correo o contraseña incorecto')
             return render(request, 'home.html', {'form':form})
 
 def get_house(request, id):
