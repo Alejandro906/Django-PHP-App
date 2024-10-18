@@ -43,20 +43,17 @@ def get_houses(request):
     return render(request, 'partials/casas.html', {'casas': page_objs})
 
 def login_form(request):
-    form = LoginForm()
     if request.method == 'POST':
         form = LoginForm(request.POST)
-        email = form.cleaned_data['email']
-        password = form.cleaned_data['password']
+        email = form.data['email']
+        password = form.data['password']
         user = authenticate(email = email, password = password)
         if user is not None:
             login(request, user)
             messages.success(request, 'Bienvenido')
             return redirect('home')
         else:
-            return render(request, 'partials/login_form.html', {'form':form})
-    
-    return render(request, 'partials/login_form.html', {'form':form})
+            return render(request, 'home.html', {'form':form})
 
 def get_house(request, id):
     casa = Casa.objects.get(id = id)
