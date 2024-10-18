@@ -38,7 +38,6 @@
             align-items: center;
         }
         .carousel {
-            background: #efefef;
             margin-top: 15px;
         }
         .carousel-cell {
@@ -47,9 +46,11 @@
             background: white;
             border-radius: 5px;
             overflow: hidden;
+            display: flex;
+            justify-content: center;
         }
         .carousel-cell img {
-            width: 100%;
+            width: 65%;
             height: 100%;
             object-fit: cover;
         }
@@ -135,6 +136,21 @@
             width: 100%;
             background-color: #e0e0e0;
         }
+        .gray-box-container{
+            display: flex;
+            padding: 6px 0px;
+            background-color: #d0d0d0;
+            align-items: center;
+            border-radius: 5px;
+            width: 100%;
+            margin-top: 10px;
+        }
+        .svg-info-container{
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            margin-left: 25px;
+        }
     </style>
 </head>
 <body>
@@ -152,7 +168,7 @@
                     </svg>
                     <span>{{ casa.address }}</span>
                 </div>
-                <div class="carousel" data-flickity='{ "wrapAround": true, "autoPlay": 2000 }'>
+                <div class="carousel" data-flickity='{ "wrapAround": true, "autoPlay": 4000 }'>
                     {% for casa_img in casa.casa_images.all %}
                         <div class="carousel-cell">
                             <img src="{{ casa_img.image.url }}" alt="Image {{ forloop.counter }}">
@@ -160,8 +176,18 @@
                     {% endfor %}
                 </div>
                 <div class="desc-title">
-                    <span class="span-title-descBox">{{casa.title}}</span>
-                    <span class="span-room-bathroom">dormitorios {{casa.rooms}} · baños {{casa.bathrooms}}</span>
+                    <span class="span-title-descBox">Beautiful Family Home</span>
+                    <div class="gray-box-container">
+                        <div class="svg-info-container">
+                            <svg  xmlns="http://www.w3.org/2000/svg"  width="20"  height="20"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-bed"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 9m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M22 17v-3h-20" /><path d="M2 8v9" /><path d="M12 14h10v-2a3 3 0 0 0 -3 -3h-7v5z" /></svg>
+                            <span class="span-room-bathroom"> {{casa.rooms}} dormitorios</span>
+                        </div>
+                        <div class="svg-info-container"><span class="span-room-bathroom">·</span></div>
+                        <div class="svg-info-container">
+                            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-bath"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 12h16a1 1 0 0 1 1 1v3a4 4 0 0 1 -4 4h-10a4 4 0 0 1 -4 -4v-3a1 1 0 0 1 1 -1z" /><path d="M6 12v-7a2 2 0 0 1 2 -2h3v2.25" /><path d="M4 21l1 -1.5" /><path d="M20 21l-1 -1.5" /></svg>
+                            <span class="span-room-bathroom"> {{casa.bathrooms}} baños</span>
+                        </div>
+                    </div>
                 </div>
                 <div class="feature-container">
                     <h3>¿Qué hay en este alojamiento?</h3>
@@ -185,6 +211,10 @@
                         <div class="iconFeature-box">
                             <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-bath"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 12h16a1 1 0 0 1 1 1v3a4 4 0 0 1 -4 4h-10a4 4 0 0 1 -4 -4v-3a1 1 0 0 1 1 -1z" /><path d="M6 12v-7a2 2 0 0 1 2 -2h3v2.25" /><path d="M4 21l1 -1.5" /><path d="M20 21l-1 -1.5" /></svg>
                             <span>Bañera</span>
+                        </div>
+                        <div class="iconFeature-box">
+                            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-parking-circle"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 16v-8h3.334c.92 0 1.666 .895 1.666 2s-.746 2 -1.666 2h-3.334" /><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /></svg>
+                            <span>Parking</span>
                         </div>
                     </div>
                 </div>
