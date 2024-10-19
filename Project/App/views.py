@@ -50,7 +50,7 @@ def login_form(request):
         user = authenticate(email = email, password = password)
         if user is not None:
             login(request, user)
-            messages.success(request, 'Bienvenido')
+            messages.success(request, f"Bievenido {user}")
             return redirect('home')
         else:
             messages.error(request, 'Correo o contraseña incorecto')

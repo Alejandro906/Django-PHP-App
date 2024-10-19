@@ -375,7 +375,7 @@
         }
         .pop-up-message{
             display: flex;
-            gap: 4px;
+            gap: 8px;
             position: absolute;
             top: 12px;
             left: 41%;
@@ -395,11 +395,19 @@
             font-family: Nunito Sans;
             font-size: 16px;
         }
+        
     </style>
 </head>
 {% for msg in messages%}
-    {% if msg.tags == 'succes'%}
-        <p style="color: green;" _="on load transition my opacity to 0 over 4s">{{msg}}</p>
+    {% if msg.tags == 'success'%}
+        <div class="pop-up-message" _="on load wait 4s then transition my opacity to 0 over 2s then remove me">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-checkbox" width="26" height="26" viewBox="0 0 24 24" stroke-width="1" stroke="#00b341" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                <path d="M9 11l3 3l8 -8" />
+                <path d="M20 12v6a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h9" />
+            </svg>
+            <p>{{msg}}</p>
+        </div>
     {% else %}
         <div class="pop-up-message" _="on load wait 4s then transition my opacity to 0 over 2s then remove me">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="26" height="26" viewBox="0 0 24 24" stroke-width="1" stroke="#ff2825" fill="rgb(255, 141, 141)" stroke-linecap="round" stroke-linejoin="round">
