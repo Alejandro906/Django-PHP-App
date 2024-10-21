@@ -5,6 +5,7 @@ from .models import Casa
 from django.core.paginator import Paginator
 from django.contrib import messages
 import time
+import random
 
 # Create your views here.
 
@@ -34,7 +35,9 @@ def second_form(request):
 
 
 def get_houses(request):
-    time.sleep(2)
+    times = [0.1, 0.5, 1.5, 2.0, 0.2]
+    time_to_load = random.choice(times)
+    time.sleep(time_to_load)
     casas = Casa.objects.all()
     paginator = Paginator(casas, 4)
     page = request.GET.get('page')
