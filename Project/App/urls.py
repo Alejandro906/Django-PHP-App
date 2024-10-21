@@ -8,7 +8,8 @@ urlpatterns = [
     path('login_form/', views.login_form, name = 'login_form'),
     path('get_houses/', views.get_houses, name = 'get_houses'),
     path('', views.home, name = 'home'),
-    path('get_house/<int:id>', views.get_house, name = 'get_house')
+    path('get_house/<int:id>', views.get_house, name = 'get_house'),
+    path('main-map/', views.main_map, name = 'main-map')
 ]
 
 

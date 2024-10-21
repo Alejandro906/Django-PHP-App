@@ -6,6 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bnb Housing</title>
     <link rel="icon" href="{% static 'logo.png' %}" type="image/png" class="tab-logo">
+
+    <link href="https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.js"></script>
+    <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.3/mapbox-gl-geocoder.min.js"></script>
+    <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.3/mapbox-gl-geocoder.css" type="text/css">
+
     <script src="https://unpkg.com/htmx.org@2.0.3" integrity="sha384-0895/pl2MU10Hqc6jd4RvrthNlDiE9U1tWmX7WRESftEDRosgxNsQG/Ze9YMRzHq" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -314,12 +320,16 @@
         }
         .login-form-container form input{
             box-shadow: inset 0px 0px 0px rgba(0, 0, 0, 0);
-            padding: 10px 4px;
+            padding: 10px 5px;
             font-family: Nunito Sans;
             font-size: 15px;
             border: 1px solid rgb(161, 161, 161);
             border-radius: 3px;
+            width: 100%;
 
+        }
+        #password-input{
+            padding-right: 36px;
         }
         .login-form-container form input::placeholder{
             font-family: Nunito Sans;
@@ -348,13 +358,14 @@
             box-shadow: inset 400px 0px 0px rgb(0, 159, 34);
             color: white;
         }
-        .x-button{
+        .password-input-container{
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+        .password-input-container svg{
             position: absolute;
-            top: -18px;
-            left: -18px;
-            width: 32px;
-            height: 32px;
-
+            right: 1px;
         }
         .span-recommend{
             font-size: 16px;
@@ -448,6 +459,17 @@
             font-family: Nunito Sans;
             font-size: 16px;
         }
+        #map { 
+            position: absolute; 
+            top: 0; 
+            bottom: 0; 
+            width: 100%; 
+        }
+        .give-map-page{
+            height: 100vh;
+            overflow: hidden;
+        }
+
 
     </style>
 </head>
@@ -476,12 +498,27 @@
     <h1>Inicia session</h1>
     <form action="{%url 'login_form'%}" method="post">
         {%csrf_token%}
-        {{form.email}}
-        {{form.password}}
+        <div class="password-input-container">
+            <input type="text" name="email" placeholder="Correo">
+        </div>
+        <div class="password-input-container">
+            <input type="password" name="password" id="password-input" placeholder="Contraseña">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-eye-off" width="24" height="24" viewBox="0 0 24 24" stroke-width="1" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round" _="on click if #password-input.type is 'password' then set #password-input.type to 'text' then show #open-eye then hide #close-eye else set #password-input.type to 'password' then show #close-eye then hide #open-eye" id="close-eye">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                <path d="M10.585 10.587a2 2 0 0 0 2.829 2.828" />
+                <path d="M16.681 16.673a8.717 8.717 0 0 1 -4.681 1.327c-3.6 0 -6.6 -2 -9 -6c1.272 -2.12 2.712 -3.678 4.32 -4.674m2.86 -1.146a9.055 9.055 0 0 1 1.82 -.18c3.6 0 6.6 2 9 6c-.666 1.11 -1.379 2.067 -2.138 2.87" />
+                <path d="M3 3l18 18" />
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-eye" width="24" height="24" viewBox="0 0 24 24" stroke-width="1" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round" _="on click if #password-input.type is 'password' then set #password-input.type to 'text' then show #open-eye then hide #close-eye else set #password-input.type to 'password' then show #close-eye then hide #open-eye" id="open-eye">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+                <path d="M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6" />
+            </svg>
+        </div>
         <button type="submit" class="login-but">Iniciar</button>
     </form>
 </div>
-<body>
+<body id="body">
     <div class="main-container">
         <div class="header-container">
             <div class="header-top">
@@ -489,7 +526,7 @@
                     <img class="logo" src="{% static 'logo.png'%}" alt="">
                 </div>
                 <div class="center-container">
-                    <div class="center-span-icon-container">
+                    <div class="center-span-icon-container" hx-get="{% url 'main-map' %}" hx-target="#body" hx-swap="outerHTML" _="on click add .give-map-page to #body">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M352 256c0 22.2-1.2 43.6-3.3 64l-185.3 0c-2.2-20.4-3.3-41.8-3.3-64s1.2-43.6 3.3-64l185.3 0c2.2 20.4 3.3 41.8 3.3 64zm28.8-64l123.1 0c5.3 20.5 8.1 41.9 8.1 64s-2.8 43.5-8.1 64l-123.1 0c2.1-20.6 3.2-42 3.2-64s-1.1-43.4-3.2-64zm112.6-32l-116.7 0c-10-63.9-29.8-117.4-55.3-151.6c78.3 20.7 142 77.5 171.9 151.6zm-149.1 0l-176.6 0c6.1-36.4 15.5-68.6 27-94.7c10.5-23.6 22.2-40.7 33.5-51.5C239.4 3.2 248.7 0 256 0s16.6 3.2 27.8 13.8c11.3 10.8 23 27.9 33.5 51.5c11.6 26 20.9 58.2 27 94.7zm-209 0L18.6 160C48.6 85.9 112.2 29.1 190.6 8.4C165.1 42.6 145.3 96.1 135.3 160zM8.1 192l123.1 0c-2.1 20.6-3.2 42-3.2 64s1.1 43.4 3.2 64L8.1 320C2.8 299.5 0 278.1 0 256s2.8-43.5 8.1-64zM194.7 446.6c-11.6-26-20.9-58.2-27-94.6l176.6 0c-6.1 36.4-15.5 68.6-27 94.6c-10.5 23.6-22.2 40.7-33.5 51.5C272.6 508.8 263.3 512 256 512s-16.6-3.2-27.8-13.8c-11.3-10.8-23-27.9-33.5-51.5zM135.3 352c10 63.9 29.8 117.4 55.3 151.6C112.2 482.9 48.6 426.1 18.6 352l116.7 0zm358.1 0c-30 74.1-93.6 130.9-171.9 151.6c25.5-34.2 45.2-87.7 55.3-151.6l116.7 0z"/></svg>
                         <span class="center-text">Mapa</span>
                     </div>
