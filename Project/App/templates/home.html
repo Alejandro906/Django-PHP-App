@@ -27,10 +27,10 @@
             object-fit: cover;
         }
         #loader{
-            width: 70px;
-            height: 70px;
-            border: 3px solid rgb(209, 209, 209);
-            border-top: 3px solid rgb(164, 255, 90);
+            width: 50px;
+            height: 50px;
+            border: 6px solid rgb(226, 226, 226);
+            border-top: 6px solid rgb(164, 255, 90);
             border-radius: 50%;
             animation: 1s anima linear infinite;
             display: none;
@@ -120,6 +120,7 @@
             display: flex;
             justify-content: center;
             margin-bottom: 35px;
+            position: relative;
         }
         .input-container{
             border: 0.5px solid rgba(0, 0, 0, 0.15);
@@ -469,6 +470,16 @@
             height: 100vh;
             overflow: hidden;
         }
+        ::-webkit-scrollbar{
+            width: 20px;
+            height: 20px;
+        }
+        #search-results{
+            background-color: white;
+            width: 55%;
+            position: absolute;
+            top: 70px;
+        }
     </style>
 </head>
 {% for msg in messages%}
@@ -497,10 +508,10 @@
     <form action="{%url 'login_form'%}" method="post">
         {%csrf_token%}
         <div class="password-input-container">
-            <input type="text" name="email" placeholder="Correo">
+            <input type="email" name="email" placeholder="Correo" required>
         </div>
         <div class="password-input-container">
-            <input type="password" name="password" id="password-input" placeholder="Contraseña">
+            <input type="password" name="password" id="password-input" placeholder="Contraseña" required>
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-eye-off" width="24" height="24" viewBox="0 0 24 24" stroke-width="1" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round" _="on click if #password-input.type is 'password' then set #password-input.type to 'text' then show #open-eye then hide #close-eye else set #password-input.type to 'password' then show #close-eye then hide #open-eye" id="close-eye">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                 <path d="M10.585 10.587a2 2 0 0 0 2.829 2.828" />
@@ -555,7 +566,7 @@
                 <div class="input-container">
                     <div class="text-container">
                         <span>Destion</span>
-                        <input type="text" placeholder="Buscar destinos">
+                        <input type="text" placeholder="Buscar destinos" hx-get="{% url 'search_filter' %}" hx-trigger="keyup delay:500ms" hx-target="#search-results" name="search" hx-swap="innerHTML" _="on keyup if my value.length is 0 then hide #search-results else wait 600ms then show #search-results">
                     </div>
                     <div class="search-icon-container">
                         <button class="button-search-icon">
@@ -567,7 +578,9 @@
                         </button>
                     </div>
                 </div>
+                <div id="search-results"></div>
             </div>
+            
         </div>
         <div id="content-container">
             <div id="data-container" hx-get="{% url 'get_houses' %}?page=1" hx-trigger="load" hx-swap="beforeend" hx-target="#content-container" hx-indicator="#loader"></div>

@@ -16,7 +16,7 @@ def login_register(request):
     return render(request, 'login_register.html', {})
 
 
-def first_form(request):
+def first_form(request):    
     form = CasaForm()
     if request.method == 'POST':
         form = CasaForm(request.POST)
@@ -63,5 +63,9 @@ def get_house(request, id):
 def main_map(request):
     token = 'pk.eyJ1Ijoiam9yZ2UyMiIsImEiOiJjbTIyY2s1MncwNXZ6MmlzZTRyZ3BocjFmIn0.JC_oYwALzZQ7pIsgDdJ0Hw'
     return render(request, 'partials/main-map.html', {'token':token})
+def search_filter(request):
+    search_value = request.GET.get('search')
+    filter_values = Casa.objects.filter(city__icontains=search_value).distinct()
+    return render(request, 'partials/search.html', {'results':filter_values})
         
 
