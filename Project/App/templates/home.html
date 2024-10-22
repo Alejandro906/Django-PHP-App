@@ -619,7 +619,7 @@
                 <div class="input-container">
                     <div class="text-container">
                         <span>Destion</span>
-                        <input type="text" placeholder="Buscar destinos" hx-get="{% url 'search_filter' %}" hx-trigger="keyup delay:500ms" hx-target="#search-results" name="search" hx-swap="innerHTML" _="on keyup if my value.length is 0 then hide #search-results else wait 600ms then show #search-results" id="search-input">
+                        <input type="text" placeholder="Buscar destinos" hx-get="{% url 'search_filter' %}" hx-trigger="keyup" hx-target="#search-results" name="search" hx-swap="innerHTML" _="on keyup if my value.length is 0 then hide #search-results else wait 600ms then show #search-results" id="search-input">
                     </div>
                     <div class="search-icon-container">
                         <div id="loader-2"></div>
