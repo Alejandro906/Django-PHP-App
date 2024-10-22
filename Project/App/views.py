@@ -65,7 +65,23 @@ def main_map(request):
     return render(request, 'partials/main-map.html', {'token':token})
 def search_filter(request):
     search_value = request.GET.get('search')
-    filter_values = Casa.objects.filter(city__icontains=search_value).distinct()
-    return render(request, 'partials/search.html', {'results':filter_values})
+    filter_values = Casa.objects.filter(city__icontains=search_value)
+    unique_results = {casa.city: casa for casa in filter_values}.values()  # Use a dictionary to ensure unique cities
+    return render(request, 'partials/search.html', {'results': unique_results})
+
+from django.core.paginator import Paginator
+
+def search_input_filter(request, city):
+    times = [0.1, 0.5, 1.5, 2.0, 0.2]
+    time_to_load = random.choice(times)
+    time.sleep(time_to_load)
+    filter_houses = Casa.objects.filter(city=city)
+    paginator = Paginator(filter_houses, 4)
+    page = request.GET.get('page')
+    page_objs = paginator.get_page(page)
+    return render(request, 'partials/casas.html', {'casas': page_objs})
+
+    
+
         
 

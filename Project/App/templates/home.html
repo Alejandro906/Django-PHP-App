@@ -36,10 +36,23 @@
             display: none;
             margin-top: 30px;
             margin-bottom: 60px;
-
-
         }
         #loader.htmx-request{
+            display: block;
+        }
+        #loader-2{
+            position: absolute;
+            margin: auto;
+            width: 20px;
+            height: 20px;
+            border: 4px solid rgb(226, 226, 226);
+            border-top: 4px solid rgb(164, 255, 90);
+            border-radius: 50%;
+            animation: 1s anima linear infinite;
+            display: none;
+            margin-right: 110px;
+        }
+        #loader-2.htmx-request{
             display: block;
         }
 
@@ -160,6 +173,7 @@
             stroke: black;
         }
         .search-icon-container{
+            position: relative;
             background-color: rgb(164, 255, 90);
             width: 50px;
             height: 48px;
@@ -454,6 +468,9 @@
             align-items: center;
             
         }
+        .pop-up-message svg{
+            cursor:auto;
+        }
         .pop-up-message p{
             margin: 0px;
             color: rgb(97, 97, 97);
@@ -465,6 +482,7 @@
             top: 0; 
             bottom: 0; 
             width: 100%; 
+            left: 0;
         }
         .give-map-page{
             height: 100vh;
@@ -478,8 +496,10 @@
             padding: 20px 40px 20px 40px;
             border-radius: 10px;
             box-shadow: 0px 0px 12px rgb(0, 0, 0, 0.1);
-            height: 225px;
+            min-height: 70px;
+            max-height: 225px;
             overflow-y: scroll;
+
         }
         .search-gray-container{
             height: 48px;
@@ -599,11 +619,12 @@
                 <div class="input-container">
                     <div class="text-container">
                         <span>Destion</span>
-                        <input type="text" placeholder="Buscar destinos" hx-get="{% url 'search_filter' %}" hx-trigger="keyup delay:500ms" hx-target="#search-results" name="search" hx-swap="innerHTML" _="on keyup if my value.length is 0 then hide #search-results else wait 600ms then show #search-results">
+                        <input type="text" placeholder="Buscar destinos" hx-get="{% url 'search_filter' %}" hx-trigger="keyup delay:500ms" hx-target="#search-results" name="search" hx-swap="innerHTML" _="on keyup if my value.length is 0 then hide #search-results else wait 600ms then show #search-results" id="search-input">
                     </div>
                     <div class="search-icon-container">
+                        <div id="loader-2"></div>
                         <button class="button-search-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.3" stroke="black" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.3" stroke="black" fill="none" stroke-linecap="round" stroke-linejoin="round" id="search-icon">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                 <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
                                 <path d="M21 21l-6 -6" />
@@ -611,8 +632,7 @@
                         </button>
                     </div>
                 </div>
-                <div id="search-results" _="on load hide me">
-                </div>
+                <div id="search-results" _="on load hide me"></div>
             </div>
         </div>
         <div id="content-container">
