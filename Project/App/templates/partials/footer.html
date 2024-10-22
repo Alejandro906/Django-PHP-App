@@ -30,13 +30,13 @@
     }
     .right-section{
         display: flex;
-        justify-content: space-between;
+        justify-content: end;
         width: 100%;
         max-width: 300px;
         font-weight: bold;
         color: black;
         align-items: center;
-
+        gap: 20px;
     }
     .right-section>span, .left-section>span{
         cursor: pointer;
@@ -54,31 +54,11 @@
         gap: 3px;
         align-items: center;
     }
-    .ayuda-div{
-        display: flex;
-        gap: 5px;
-        align-items: center;
-        cursor: pointer;
-    }
-    .ayuda-div:hover{
-        text-decoration: dashed;
-    }
-    .ayuda-div>svg{
-        padding: 0;
-    }
 </style>
 <body>
     <div class="footer">
         <div class="left-section">
             <span>© 2024 BnB Housing, Inc.</span>
-            <span>·</span>
-            <span>Privacidad</span>
-            <span>·</span>
-            <span>Condiciones</span>
-            <span>·</span>
-            <span>Mapa del sitio</span>
-            <span>·</span>
-            <span>Datos de la empresa</span>
         </div>
         <div class="right-section">
             <div class="world-icon-container">
@@ -88,10 +68,6 @@
             <div class="currency-container">
                 <span>€</span>
                 <span>EUR</span>
-            </div>
-            <div class="ayuda-div">
-                <span class="ayuda-recursos">Ayuda y recursos</span>
-                <svg  xmlns="http://www.w3.org/2000/svg"  width="17"  height="17"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-down"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg>
             </div>
         </div>
     </div>
