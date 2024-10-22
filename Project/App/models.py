@@ -28,6 +28,11 @@ class Casa(models.Model):
     wifi = models.BooleanField(default=False)
     date_uploaded = models.DateTimeField(auto_now_add=True , null = True, blank=True)
     recommended = models.BooleanField(default=False, null=True, blank=True)
+    square_meter = models.IntegerField(null=True, blank=True)
+    parking = models.BooleanField(default=False)
+    TV = models.BooleanField(default=False)
+    tub = models.BooleanField(default=False)
+    
 
     def __str__(self):
         return f"casa en {self.country} con direccion {self.address}"
