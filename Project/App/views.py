@@ -52,7 +52,7 @@ def login_form(request):
         if user is not None:
             login(request, user)
             messages.success(request, f"Bievenido {user}")
-            return redirect('home')
+            return redirect('form')
         else:
             messages.error(request, 'Correo o contraseña incorecto')
             return redirect('home')

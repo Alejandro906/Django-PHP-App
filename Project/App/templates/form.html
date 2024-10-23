@@ -3,10 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <script src="https://unpkg.com/hyperscript.org@0.9.12"></script>
+    <title>Panel de Administrador</title>
+    <style>
+        .pop-up-message{
+            display: flex;
+            gap: 10px;
+            position: absolute;
+            top: 12px;
+            left: 41%;
+            border-radius: 5px;
+            padding: 8px 14px;
+            z-index: 20;
+            background-color: white;
+            padding: 8px 14px;
+            padding-right: 22px;
+            box-shadow: 0px 2px 6px rgb(0, 0, 0, 0.1);
+            align-items: center;
+            
+        }
+        .pop-up-message svg{
+            cursor:auto;
+        }
+        .pop-up-message p{
+            margin: 0px;
+            color: rgb(97, 97, 97);
+            font-family: Nunito Sans;
+            font-size: 16px;
+        }
+    </style>
 </head>
 <body>
     <h1>Home Page</h1>
+    {% for msg in messages%}
+        {% if msg.tags == 'success'%}
+        <div class="pop-up-message" _="on load wait 2s then transition my opacity to 0 over 2s then remove me" style="border: 1px solid green;">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-checkbox" width="26" height="26" viewBox="0 0 24 24" stroke-width="1" stroke="#00b341" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                <path d="M9 11l3 3l8 -8" />
+                <path d="M20 12v6a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h9" />
+            </svg>
+            <p>{{msg}}</p>
+        </div>
+        {% endif %}
+    {% endfor %}
+
 
     <form action="" method="post">
         {%csrf_token%}

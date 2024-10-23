@@ -15,8 +15,6 @@
             background-color: #e1e1e1;
         }
         .vivienda-container {
-            width: 100%;
-            max-width: 95%;
             background-color: white;
             display: flex;
             gap: 30px;
@@ -258,6 +256,39 @@
             gap: 5px;
             align-items: center;
         }
+
+        @media only screen and (max-width : 400px) {
+            .right-container-viv{
+                display: none;
+            }
+            .left-container-viv{
+                margin: 0;
+            }
+            .description-paragraph-container>p{
+                padding: 0px 20px;
+            }
+            .feature-container{
+                padding: 0px 20px;
+            }
+            .location-container{
+                align-items: start;
+            }
+            .span-title-descBox{
+                margin-top: 16px;
+            }
+            h1, .location-container, .span-title-descBox{
+                margin-left: 10px;
+            }
+            .svg-info-container{
+                margin-left: 0;
+            }
+            .gray-box-container{
+                justify-content: space-evenly;
+            }
+            .currency-container{
+                display: none;
+            }
+        }
     </style>
 </head>
 <body>
@@ -313,7 +344,7 @@
                         <div class="svg-info-container"><span class="span-room-bathroom">·</span></div>
                         <div class="svg-info-container">
                             <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-bath"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 12h16a1 1 0 0 1 1 1v3a4 4 0 0 1 -4 4h-10a4 4 0 0 1 -4 -4v-3a1 1 0 0 1 1 -1z" /><path d="M6 12v-7a2 2 0 0 1 2 -2h3v2.25" /><path d="M4 21l1 -1.5" /><path d="M20 21l-1 -1.5" /></svg>
-                            <span class="span-room-bathroom"> 243 m<sup>2</sup></span>
+                            <span class="span-room-bathroom"> {{casa.square_meter}} m<sup>2</sup></span>
                         </div>
                     </div>
                 </div>

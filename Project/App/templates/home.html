@@ -533,11 +533,59 @@
         .search-results-marker-icon-container>p{
             font-family: 'Nunito Sans';
         }
+        ::-webkit-scrollbar{
+            width: 0;
+            height: 0;
+        }
+
+        @media only screen and (max-width: 400px){
+            .center-span-icon-container,
+            .header-where, 
+            .filters-container,
+            .button-search-icon {
+                display: none;
+            }
+            .footer{
+                padding: 0px 20px;
+            }
+            .input-container{
+                width: 90%;
+            }
+            .search-icon-container{
+                background-color: transparent;
+            }
+            #loader-2{
+                margin: 0;
+            }
+            #search-results{
+                width: 70%;
+                padding: 10px 18px 10px 5px;
+            }
+            .login-form-container{
+                width: 65%;
+                right: 23px;
+            }
+            .pop-up-message{
+                left: 12%;
+            }
+            .right-container-viv{
+                display: none;
+            }
+            .search-gray-container{
+                width: 28px;
+                height: 28px;
+            }
+            ::-webkit-scrollbar{
+                width: 0;
+                height: 0;
+            }
+
+        }
     </style>
 </head>
 {% for msg in messages%}
     {% if msg.tags == 'success'%}
-    <div class="pop-up-message" _="on load wait 4s then transition my opacity to 0 over 2s then remove me" style="border: 1px solid green;">
+    <div class="pop-up-message" _="on load wait 3s then transition my opacity to 0 over 2s then remove me" style="border: 1px solid green;">
         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-checkbox" width="26" height="26" viewBox="0 0 24 24" stroke-width="1" stroke="#00b341" fill="none" stroke-linecap="round" stroke-linejoin="round">
             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
             <path d="M9 11l3 3l8 -8" />
@@ -546,7 +594,7 @@
         <p>{{msg}}</p>
     </div>
     {% else %}
-        <div class="pop-up-message" _="on load wait 4s then transition my opacity to 0 over 2s then remove me" style="border: 1px solid red;">
+        <div class="pop-up-message" _="on load wait 3s then transition my opacity to 0 over 2s then remove me" style="border: 1px solid red;">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="26" height="26" viewBox="0 0 24 24" stroke-width="1" stroke="#ff2825" fill="rgb(255, 141, 141)" stroke-linecap="round" stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                 <path d="M18 6l-12 12" />
@@ -619,7 +667,7 @@
                 <div class="input-container">
                     <div class="text-container">
                         <span>Destion</span>
-                        <input type="text" placeholder="Buscar destinos" hx-get="{% url 'search_filter' %}" hx-trigger="keyup" hx-target="#search-results" name="search" hx-swap="innerHTML" _="on keyup if my value.length is 0 then hide #search-results else wait 600ms then show #search-results" id="search-input">
+                        <input type="text" placeholder="Buscar destinos" hx-get="{% url 'search_filter' %}" hx-trigger="keyup" hx-target="#search-results" name="search" hx-swap="innerHTML" _="on keyup if my value.length is 0 then hide #search-results else wait 600ms then show #search-results" id="search-input" autocomplete="off">
                     </div>
                     <div class="search-icon-container">
                         <div id="loader-2"></div>
