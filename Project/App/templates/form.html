@@ -5,7 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://unpkg.com/hyperscript.org@0.9.12"></script>
     <title>Panel de Administrador</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet">
     <style>
+        body{
+            font-family: 'Nunito Sans';
+        }
         .pop-up-message{
             display: flex;
             gap: 10px;
@@ -31,28 +38,160 @@
             font-family: Nunito Sans;
             font-size: 16px;
         }
+        .admin-form-container{
+            width: 100%;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .form-container{
+            width: 100%;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .features-container{
+            display: flex;
+            width: 100%;
+            max-width: 340px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .cara-div{
+            width: 100%;
+            max-width: 100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid #bababa;
+            border-radius: 5px;
+            height: 40px;
+            transition: all ease 0.2s;
+            cursor: pointer;
+        }
+        .cara-div>label{
+            margin-left: 10px;
+        }
+        .cara-div>input{
+            margin-right: 10px;
+            cursor: pointer;
+        }
+        .cara-div:hover{
+            background-color: #bfbfbf;
+        }
     </style>
 </head>
 <body>
-    <h1>Home Page</h1>
-    {% for msg in messages%}
-        {% if msg.tags == 'success'%}
-        <div class="pop-up-message" _="on load wait 2s then transition my opacity to 0 over 2s then remove me" style="border: 1px solid green;">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-checkbox" width="26" height="26" viewBox="0 0 24 24" stroke-width="1" stroke="#00b341" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                <path d="M9 11l3 3l8 -8" />
-                <path d="M20 12v6a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h9" />
-            </svg>
-            <p>{{msg}}</p>
-        </div>
-        {% endif %}
-    {% endfor %}
+    <div class="admin-form-container">
+        <h1>Home Page</h1>
+        {% for msg in messages%}
+            {% if msg.tags == 'success'%}
+            <div class="pop-up-message" _="on load wait 2s then transition my opacity to 0 over 2s then remove me" style="border: 1px solid green;">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-checkbox" width="26" height="26" viewBox="0 0 24 24" stroke-width="1" stroke="#00b341" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M9 11l3 3l8 -8" />
+                    <path d="M20 12v6a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h9" />
+                </svg>
+                <p>{{msg}}</p>
+            </div>
+            {% endif %}
+        {% endfor %}
 
+        <form class="form-container" action="" method="post">
+            {% csrf_token %}
+            
+            <!-- Title -->
+            <label>Title</label>
+            {{ form.title }}
+            
+            <!-- Description -->
+            <label>Description</label>
+            {{ form.description }}
+            
+            <!-- Rating -->
+            <label>Rating</label>
+            {{ form.rating }}
+            
+            <!-- Country -->
+            <label>Country</label>
+            {{ form.country }}
+            
+            <!-- City -->
+            <label>City</label>
+            {{ form.city }}
+            
+            <!-- Address -->
+            <label>Address</label>
+            {{ form.address }}
+            
+            <!-- Longitud -->
+            <label>Longitud</label>
+            {{ form.longitud }}
+            
+            <!-- Latitud -->
+            <label>Latitud</label>
+            {{ form.latitud }}
+            
+            <!-- Rooms -->
+            <label>Rooms</label>
+            {{ form.rooms }}
+            
+            <!-- Bathrooms -->
+            <label>Bathrooms</label>
+            {{ form.bathrooms }}
+            
+            <!-- Date Uploaded -->
+            <label>Date Uploaded</label>
+            {{ form.date_uploaded }}
+            
+            <!-- Recommended -->
+            <label>Recommended</label>
+            {{ form.recommended }}
+            
+            <!-- Square Meter -->
+            <label>Square Meter</label>
+            {{ form.square_meter }}
 
-    <form action="" method="post">
-        {%csrf_token%}
-        {{form.as_p}}
-        <button>Next</button>
-    </form>
+            <span>Características</span>
+
+            <div class="features-container">
+                <!-- Parking -->
+                 <div class="cara-div">
+                    <label>Parking</label>
+                    {{ form.parking }}
+                 </div>
+                <div class="cara-div">
+                    <!-- TV -->
+                    <label>TV</label>
+                    {{ form.TV }}
+                </div>
+                <div class="cara-div">
+                    <!-- Tub -->
+                    <label>Tub</label>
+                    {{ form.tub }}
+                </div>
+                <div class="cara-div">
+                    <!-- Kitchen -->
+                    <label>Kitchen</label>
+                    {{ form.kitchen }}
+                </div>
+                <div class="cara-div">
+                    <!-- AC -->
+                    <label>AC</label>
+                    {{ form.AC }}
+                </div>
+                <div class="cara-div">
+                    <!-- WiFi -->
+                    <label>WiFi</label>
+                    {{ form.wifi }}
+                </div>
+            </div>
+            
+            <!-- Submit Button -->
+            <button type="submit">Next</button>
+        </form>        
+    </div>
 </body>
-</html>
+</html> 
