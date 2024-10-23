@@ -24,7 +24,7 @@ def first_form(request):
             casa = form.save()
             casa_obj = Casa.objects.get(id = casa.id)
             print(casa_obj)
-            return redirect('login-register')
+            return redirect('home')
         else:
             return render(request, 'form.html', {'form':form})
     return render(request, 'form.html', {'form':form})

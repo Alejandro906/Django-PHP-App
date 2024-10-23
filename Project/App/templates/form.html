@@ -13,31 +13,6 @@
         body{
             font-family: 'Nunito Sans';
         }
-        .pop-up-message{
-            display: flex;
-            gap: 10px;
-            position: absolute;
-            top: 12px;
-            left: 41%;
-            border-radius: 5px;
-            padding: 8px 14px;
-            z-index: 20;
-            background-color: white;
-            padding: 8px 14px;
-            padding-right: 22px;
-            box-shadow: 0px 2px 6px rgb(0, 0, 0, 0.1);
-            align-items: center;
-            
-        }
-        .pop-up-message svg{
-            cursor:auto;
-        }
-        .pop-up-message p{
-            margin: 0px;
-            color: rgb(97, 97, 97);
-            font-family: Nunito Sans;
-            font-size: 16px;
-        }
         .admin-form-container{
             width: 100%;
             display: flex;
@@ -51,6 +26,11 @@
             align-items: center;
             flex-direction: column;
             gap: 10px;
+            max-width: 340px;
+            background-color: white;
+            box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.25);
+            border-radius: 10px;
+            padding: 20px;
         }
         .features-container{
             display: flex;
@@ -63,135 +43,303 @@
             width: 100%;
             max-width: 100px;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
-            border: 1px solid #bababa;
+            border: 1px solid rgb(205, 205, 205);
             border-radius: 5px;
-            height: 40px;
-            transition: all ease 0.2s;
             cursor: pointer;
+            transition: all ease 0.25s;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .cara-div.selected{
+            background-color: rgb(190, 255, 190);
+            border-color: black;
         }
         .cara-div>label{
-            margin-left: 10px;
-        }
-        .cara-div>input{
-            margin-right: 10px;
+            font-weight: 700;
+            font-size: 15px;
             cursor: pointer;
         }
+        .cara-div>input{
+            display: none;
+        }
         .cara-div:hover{
-            background-color: #bfbfbf;
+            border: 1px solid black;
+        }
+        .cara-div>svg{
+            margin-top: 3px;
+        }
+        .span-title-header{
+            font-size: 18px;
+            font-weight: 800;
+            margin-top: 8px;
+            margin-bottom: 8px;
+        }
+        .div-dor-bano{
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 10px;
+        }
+        .div-rooms-bath{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 100px;
+            height: 50px;
+            border-bottom: 1px solid #c2c2c2;
+        }
+        .rooms-bath-container{
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            width: 100%;
+        }
+        .plus-minus-div>input{
+            border: none;
+            width: 30px;
+            margin-left: 20px;
+        }
+        .plus-minus-div>button{
+            width: 30px;
+            height: 30px;
+            border-radius: 15px;
+            align-items: center;
+            border: 1px solid black;
+            cursor: pointer;
+            background-color: transparent;
+        }
+        .location-container{
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: space-between;
+        }
+        .locate-svg-div>input{
+            width: 110px;
+            border-radius: 10px;
+            border: 1px solid #9a9a9a;
+            padding: 3px;
+            padding-left: 5px;
+            font-family: 'Nunito Sans';
+            font-size: 12px;
+        }
+        .locate-svg-div{
+            display: flex;
+            align-items: center;
+            gap: 3px;
+        }
+        .recom-meter-container{
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            gap: 50px;
+            margin-top: 10px;
+        }
+        .recom-meter-div{
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .recom-meter-div>input{
+            width: 110px;
+            border-radius: 10px;
+            border: 1px solid #9a9a9a;
+            padding: 3px;
+            padding-left: 5px;
+            font-family: 'Nunito Sans';
+            font-size: 12px;
+        }
+        .general-container{
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: space-between;
+        }
+        textarea{
+            width: 100%;
+            border-radius: 10px;
+            border: 1px solid #9a9a9a;
+            padding: 3px;
+            padding-left: 5px;
+            font-family: 'Nunito Sans';
+            font-size: 12px;
+        }
+        .submit-btn{
+            margin-top: 20px;
+            padding: 7px 50px 7px 50px;
+            border-radius: 15px;
+            font-size: 16px;
+            font-weight: 600;
+            border: 1px solid black;
+            background-color: transparent;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
     <div class="admin-form-container">
-        <h1>Home Page</h1>
-        {% for msg in messages%}
-            {% if msg.tags == 'success'%}
-            <div class="pop-up-message" _="on load wait 2s then transition my opacity to 0 over 2s then remove me" style="border: 1px solid green;">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-checkbox" width="26" height="26" viewBox="0 0 24 24" stroke-width="1" stroke="#00b341" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                    <path d="M9 11l3 3l8 -8" />
-                    <path d="M20 12v6a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h9" />
-                </svg>
-                <p>{{msg}}</p>
-            </div>
-            {% endif %}
-        {% endfor %}
 
         <form class="form-container" action="" method="post">
             {% csrf_token %}
-            
-            <!-- Title -->
-            <label>Title</label>
-            {{ form.title }}
-            
-            <!-- Description -->
-            <label>Description</label>
-            {{ form.description }}
-            
-            <!-- Rating -->
-            <label>Rating</label>
-            {{ form.rating }}
-            
-            <!-- Country -->
-            <label>Country</label>
-            {{ form.country }}
-            
-            <!-- City -->
-            <label>City</label>
-            {{ form.city }}
-            
-            <!-- Address -->
-            <label>Address</label>
-            {{ form.address }}
-            
-            <!-- Longitud -->
-            <label>Longitud</label>
-            {{ form.longitud }}
-            
-            <!-- Latitud -->
-            <label>Latitud</label>
-            {{ form.latitud }}
-            
-            <!-- Rooms -->
-            <label>Rooms</label>
-            {{ form.rooms }}
-            
-            <!-- Bathrooms -->
-            <label>Bathrooms</label>
-            {{ form.bathrooms }}
-            
-            <!-- Date Uploaded -->
-            <label>Date Uploaded</label>
-            {{ form.date_uploaded }}
-            
-            <!-- Recommended -->
-            <label>Recommended</label>
-            {{ form.recommended }}
-            
-            <!-- Square Meter -->
-            <label>Square Meter</label>
-            {{ form.square_meter }}
+            <h2>Añadir Casa</h2>
 
-            <span>Características</span>
+            <span class="span-title-header">Su Vivienda</span>
+
+            <div class="general-container">
+                <!-- Title -->
+                <div class="locate-svg-div">
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="20"  height="20"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-article"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 4m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z" /><path d="M7 8h10" /><path d="M7 12h10" /><path d="M7 16h10" /></svg>
+                    <input type="text" name="title" id="title" placeholder="Titulo">
+                </div>
+                <div class="locate-svg-div">
+                    <!-- Rating -->
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="20"  height="20"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-star"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z" /></svg>
+                     <input type="text" id="rating" name="rating" placeholder="Rating">
+                </div>
+                <!-- Description -->
+                <textarea name="description" id="description" placeholder="Introduzca una descripcion de su vivienda"></textarea>
+            </div>
+            
+            <span class="span-title-header">Ubicación</span>
+
+            <div class="location-container">
+                <div class="locate-svg-div">
+                    <!-- Country -->
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="20"  height="20"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-flag"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 5a5 5 0 0 1 7 0a5 5 0 0 0 7 0v9a5 5 0 0 1 -7 0a5 5 0 0 0 -7 0v-9z" /><path d="M5 21v-7" /></svg>
+                    <input type="text" id="country" name="country" placeholder="Pais">
+                </div>
+
+                <div class="locate-svg-div">
+                    <!-- City -->
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="20"  height="20"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-building-community"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M8 9l5 5v7h-5v-4m0 4h-5v-7l5 -5m1 1v-6a1 1 0 0 1 1 -1h10a1 1 0 0 1 1 1v17h-8" /><path d="M13 7l0 .01" /><path d="M17 7l0 .01" /><path d="M17 11l0 .01" /><path d="M17 15l0 .01" /></svg>
+                    <input type="text" id="city" name="city" placeholder="Ciudad">
+                </div>
+
+                <div class="locate-svg-div">
+                    <!-- Address -->
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="20"  height="20"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-map-pins"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10.828 9.828a4 4 0 1 0 -5.656 0l2.828 2.829l2.828 -2.829z" /><path d="M8 7l0 .01" /><path d="M18.828 17.828a4 4 0 1 0 -5.656 0l2.828 2.829l2.828 -2.829z" /><path d="M16 15l0 .01" /></svg>
+                    <input type="text" id="address" name="address" placeholder="Direccion">
+                </div>
+            </div>
+            
+            <div class="div-dor-bano">
+                <span class="span-title-header">Dormitorios</span>
+                <span class="span-title-header">·</span>
+                <span class="span-title-header">Baños</span>
+            </div>
+
+            <div class="rooms-bath-container">
+                <!-- Rooms -->
+                <div class="div-rooms-bath">
+                    <label for="rooms">Rooms</label>
+                    <div class="plus-minus-div">
+                        <button type="button" onclick="decrement('rooms')">-</button>
+                        <input id="rooms" name="rooms" type="number" value="{{ form.rooms.value|default:1 }}" min="1" readonly>
+                        <button type="button" onclick="increment('rooms')">+</button>
+                    </div>
+                </div>
+                
+                <!-- Bathrooms -->
+                <div class="div-rooms-bath">
+                    <label for="bathrooms">Bathrooms</label>
+                    <div class="plus-minus-div">
+                        <button type="button" onclick="decrement('bathrooms')">-</button>
+                        <input id="bathrooms" name="bathrooms" type="number" value="{{ form.bathrooms.value|default:0 }}" min="0" readonly>
+                        <button type="button" onclick="increment('bathrooms')">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="recom-meter-container">
+                <div class="recom-meter-div">
+                    <!-- Recommended -->
+                    {{ form.recommended }}
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="20"  height="20"  viewBox="0 0 24 24"  fill="currentColor"  class="icon icon-tabler icons-tabler-filled icon-tabler-rosette-discount-check"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12.01 2.011a3.2 3.2 0 0 1 2.113 .797l.154 .145l.698 .698a1.2 1.2 0 0 0 .71 .341l.135 .008h1a3.2 3.2 0 0 1 3.195 3.018l.005 .182v1c0 .27 .092 .533 .258 .743l.09 .1l.697 .698a3.2 3.2 0 0 1 .147 4.382l-.145 .154l-.698 .698a1.2 1.2 0 0 0 -.341 .71l-.008 .135v1a3.2 3.2 0 0 1 -3.018 3.195l-.182 .005h-1a1.2 1.2 0 0 0 -.743 .258l-.1 .09l-.698 .697a3.2 3.2 0 0 1 -4.382 .147l-.154 -.145l-.698 -.698a1.2 1.2 0 0 0 -.71 -.341l-.135 -.008h-1a3.2 3.2 0 0 1 -3.195 -3.018l-.005 -.182v-1a1.2 1.2 0 0 0 -.258 -.743l-.09 -.1l-.697 -.698a3.2 3.2 0 0 1 -.147 -4.382l.145 -.154l.698 -.698a1.2 1.2 0 0 0 .341 -.71l.008 -.135v-1l.005 -.182a3.2 3.2 0 0 1 3.013 -3.013l.182 -.005h1a1.2 1.2 0 0 0 .743 -.258l.1 -.09l.698 -.697a3.2 3.2 0 0 1 2.269 -.944zm3.697 7.282a1 1 0 0 0 -1.414 0l-3.293 3.292l-1.293 -1.292l-.094 -.083a1 1 0 0 0 -1.32 1.497l2 2l.094 .083a1 1 0 0 0 1.32 -.083l4 -4l.083 -.094a1 1 0 0 0 -.083 -1.32z" /></svg>
+                </div>
+                <div class="recom-meter-div">
+                    <!-- Square Meter -->
+                     <input type="text" placeholder="metros cuadrados" id="square_meter" name="square_meter">
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="20"  height="20"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-meter-square"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M17 5h2a1 1 0 0 1 1 1v1a1 1 0 0 1 -1 1h-1a1 1 0 0 0 -1 1v1a1 1 0 0 0 1 1h2" /><path d="M4 12v6" /><path d="M4 14a2 2 0 0 1 2 -2h.5a2.5 2.5 0 0 1 2.5 2.5v3.5" /><path d="M9 15.5v-1a2.5 2.5 0 1 1 5 0v3.5" /></svg>
+                </div>
+            </div>
+            
+            <span class="span-title-header">Características</span>
 
             <div class="features-container">
                 <!-- Parking -->
-                 <div class="cara-div">
-                    <label>Parking</label>
+                <div class="cara-div" onclick="toggleDiv(this, 'id_parking')">
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="22"  height="22"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-parking-circle"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 16v-8h3.334c.92 0 1.666 .895 1.666 2s-.746 2 -1.666 2h-3.334" /><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /></svg>
+                    <label for="id_parking">Parking</label>
                     {{ form.parking }}
-                 </div>
-                <div class="cara-div">
+                </div>
+                <div class="cara-div" onclick="toggleDiv(this, 'id_TV')">
                     <!-- TV -->
-                    <label>TV</label>
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="22"  height="22"  viewBox="0 0 24 24"  fill="currentColor"  class="icon icon-tabler icons-tabler-filled icon-tabler-device-tv"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M8.707 2.293l3.293 3.292l3.293 -3.292a1 1 0 0 1 1.32 -.083l.094 .083a1 1 0 0 1 0 1.414l-2.293 2.293h4.586a3 3 0 0 1 3 3v9a3 3 0 0 1 -3 3h-14a3 3 0 0 1 -3 -3v-9a3 3 0 0 1 3 -3h4.585l-2.292 -2.293a1 1 0 0 1 1.414 -1.414" /></svg>
+                    <label for="id_TV">TV</label>
                     {{ form.TV }}
                 </div>
-                <div class="cara-div">
+                <div class="cara-div" onclick="toggleDiv(this, 'id_tub')">
                     <!-- Tub -->
-                    <label>Tub</label>
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="22"  height="22"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-bath"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 12h16a1 1 0 0 1 1 1v3a4 4 0 0 1 -4 4h-10a4 4 0 0 1 -4 -4v-3a1 1 0 0 1 1 -1z" /><path d="M6 12v-7a2 2 0 0 1 2 -2h3v2.25" /><path d="M4 21l1 -1.5" /><path d="M20 21l-1 -1.5" /></svg>
+                    <label for="id_tub">Tub</label>
                     {{ form.tub }}
                 </div>
-                <div class="cara-div">
+                <div class="cara-div" onclick="toggleDiv(this, 'id_kitchen')">
                     <!-- Kitchen -->
-                    <label>Kitchen</label>
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="22"  height="22"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-tools-kitchen-2"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M19 3v12h-5c-.023 -3.681 .184 -7.406 5 -12zm0 12v6h-1v-3m-10 -14v17m-3 -17v3a3 3 0 1 0 6 0v-3" /></svg>
+                    <label for="id_kitchen">Kitchen</label>
                     {{ form.kitchen }}
                 </div>
-                <div class="cara-div">
+                <div class="cara-div" onclick="toggleDiv(this, 'id_AC')">
                     <!-- AC -->
-                    <label>AC</label>
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="22"  height="22"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-air-conditioning"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M8 16a3 3 0 0 1 -3 3" /><path d="M16 16a3 3 0 0 0 3 3" /><path d="M12 16v4" /><path d="M3 5m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v4a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z" /><path d="M7 13v-3a1 1 0 0 1 1 -1h8a1 1 0 0 1 1 1v3" /></svg>
+                    <label for="id_AC">AC</label>
                     {{ form.AC }}
                 </div>
-                <div class="cara-div">
+                <div class="cara-div" onclick="toggleDiv(this, 'id_wifi')">
                     <!-- WiFi -->
-                    <label>WiFi</label>
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="22"  height="22"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-wifi"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 18l.01 0" /><path d="M9.172 15.172a4 4 0 0 1 5.656 0" /><path d="M6.343 12.343a8 8 0 0 1 11.314 0" /><path d="M3.515 9.515c4.686 -4.687 12.284 -4.687 17 0" /></svg>
+                    <label for="id_wifi">WiFi</label>
                     {{ form.wifi }}
                 </div>
             </div>
             
             <!-- Submit Button -->
-            <button type="submit">Next</button>
+            <button class="submit-btn" type="submit">Next</button>
         </form>        
     </div>
+
+    <script>
+        function toggleDiv(divElement, checkboxId) {
+            const checkbox = document.getElementById(checkboxId);
+            checkbox.checked = !checkbox.checked;
+
+            // Toggle the "selected" class for the div
+            if (checkbox.checked) {
+                divElement.classList.add('selected');
+            } else {
+                divElement.classList.remove('selected');
+            }
+        }
+
+        function increment(id) {
+            let input = document.getElementById(id);
+            let value = parseInt(input.value);
+            input.value = value + 1;
+        }
+
+        function decrement(id) {
+            let input = document.getElementById(id);
+            let value = parseInt(input.value);
+            let minValue = id === 'rooms' ? 1 : 0; // Rooms can't go below 1, bathrooms can't go below 0
+            if (value > minValue) {
+                input.value = value - 1;
+            }
+        }
+    </script>
 </body>
-</html> 
+</html>
