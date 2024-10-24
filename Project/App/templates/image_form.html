@@ -1,0 +1,8 @@
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <label for="image">Upload Images:</label>
+    <input type="file" name="image" multiple>
+    <input type="file" name="image" multiple>
+    <input type="file" name="image" multiple>
+    <button type="submit">Upload Images</button>
+</form>

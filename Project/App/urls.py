@@ -11,7 +11,8 @@ urlpatterns = [
     path('get_house/<int:id>', views.get_house, name = 'get_house'),
     path('main-map/', views.main_map, name = 'main-map'),
     path('search_values/', views.search_filter, name = 'search_filter'),
-    path('filter-city/<str:city>', views.search_input_filter, name = 'search-filter')
+    path('filter-city/<str:city>', views.search_input_filter, name = 'search-filter'),
+    path('image-form/<int:casa_id>', views.second_form, name = 'image-form')
 ]
 
 

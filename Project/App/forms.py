@@ -34,3 +34,8 @@ class CasaForm(forms.ModelForm):
         model = Casa
         fields = '__all__' 
         exclude = ['longitud', 'latitud']
+
+class CasaImageForm(forms.ModelForm):
+    class Meta:
+        model = Casa_images
+        fields = ['image']

@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
-from .forms import LoginForm, UserForm, CasaForm
-from .models import Casa
+from .forms import LoginForm, UserForm, CasaForm, CasaImageForm
+from .models import Casa, Casa_images
 from django.core.paginator import Paginator
 from django.contrib import messages
 import time
@@ -22,15 +22,24 @@ def first_form(request):
         form = CasaForm(request.POST)
         if form.is_valid():
             casa = form.save()
-            casa_obj = Casa.objects.get(id = casa.id)
-            print(casa_obj)
-            return redirect('home')
+            return redirect('image-form', casa_id=casa.id)
         else:
-            return render(request, 'form.html', {'form':form})
-    return render(request, 'form.html', {'form':form})
+            return render(request, 'form.html', {'form': form})
+    return render(request, 'form.html', {'form': form})
 
-def second_form(request):
-    pass
+def second_form(request, casa_id):
+    casa = Casa.objects.get(id=casa_id)
+    if request.method == 'POST':
+        image_form = CasaImageForm(request.POST, request.FILES)
+        images = request.FILES.getlist('image')
+        if image_form.is_valid():
+            for image in images:
+                Casa_images.objects.create(casa=casa, image=image)
+                messages.success(request, f"Casa en {casa.country}, {casa.city} se añadio con exsito")
+            return redirect('home')
+    else:
+        image_form = CasaImageForm()
+    return render(request, 'image_form.html', {'form': image_form, 'casa': casa})
 
 
 def get_houses(request):
