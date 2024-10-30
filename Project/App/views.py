@@ -42,16 +42,28 @@ def second_form(request, casa_id):
     return render(request, 'image_form.html', {'form': image_form, 'casa': casa})
 
 
+from django.core.paginator import Paginator
+import random
+import time
+
 def get_houses(request):
     times = [0.1, 0.5, 1.5, 2.0, 0.2]
     time_to_load = random.choice(times)
     time.sleep(time_to_load)
-    casas = Casa.objects.all()
+
+    city = request.GET.get('city')
+    print(city)
+    if city:
+        casas = Casa.objects.filter(city__icontains = city)
+    else:
+        casas = Casa.objects.all()
+        
     paginator = Paginator(casas, 4)
     page = request.GET.get('page')
     page_objs = paginator.get_page(page)
 
-    return render(request, 'partials/casas.html', {'casas': page_objs})
+    return render(request, 'partials/casas.html', {'casas': page_objs, 'city': city})
+
 
 def login_form(request):
     if request.method == 'POST':
@@ -72,23 +84,14 @@ def get_house(request, id):
 def main_map(request):
     token = 'pk.eyJ1Ijoiam9yZ2UyMiIsImEiOiJjbTIyY2s1MncwNXZ6MmlzZTRyZ3BocjFmIn0.JC_oYwALzZQ7pIsgDdJ0Hw'
     return render(request, 'partials/main-map.html', {'token':token})
+
 def search_filter(request):
     search_value = request.GET.get('search')
     filter_values = Casa.objects.filter(city__icontains=search_value)
-    unique_results = {casa.city: casa for casa in filter_values}.values()  # Use a dictionary to ensure unique cities
+    unique_results = {casa.city: casa for casa in filter_values}.values()
     return render(request, 'partials/search.html', {'results': unique_results})
 
-from django.core.paginator import Paginator
 
-def search_input_filter(request, city):
-    times = [0.1, 0.5, 1.5, 2.0, 0.2]
-    time_to_load = random.choice(times)
-    time.sleep(time_to_load)
-    filter_houses = Casa.objects.filter(city=city)
-    paginator = Paginator(filter_houses, 4)
-    page = request.GET.get('page')
-    page_objs = paginator.get_page(page)
-    return render(request, 'partials/casas.html', {'casas': page_objs})
 
     
 
