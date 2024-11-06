@@ -25,6 +25,7 @@
     <div class="date_uploaded-container">
         <span>{{ casa.date_uploaded }}</span>
     </div>
+    
     {% if forloop.last and casas.has_next %}
         {% if city %}
         <div hx-get="{% url 'get_houses' %}?page={{ casas.next_page_number }}&city={{city}}"
@@ -47,3 +48,7 @@
     {% endif %}
 </a>
 {% endfor %}
+
+{% if city %}
+    <div hx-get="{% url 'clear_filter' %}" hx-target="#clear-filter" hx-trigger="load"></div>
+{% endif %}

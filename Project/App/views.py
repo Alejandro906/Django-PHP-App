@@ -91,6 +91,9 @@ def search_filter(request):
     unique_results = {casa.city: casa for casa in filter_values}.values()
     return render(request, 'partials/search.html', {'results': unique_results})
 
+def clear_filter(request):
+    return render(request, 'partials/clear-filter.html', {})
+
 
 
     

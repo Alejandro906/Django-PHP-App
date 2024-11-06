@@ -41,7 +41,6 @@
             display: block;
         }
         #loader-2{
-            position: absolute;
             margin: auto;
             width: 20px;
             height: 20px;
@@ -50,7 +49,6 @@
             border-radius: 50%;
             animation: 1s anima linear infinite;
             display: none;
-            margin-right: 110px;
         }
         #loader-2.htmx-request{
             display: block;
@@ -176,15 +174,14 @@
         }
         .search-icon-container{
             position: relative;
-            background-color: rgb(164, 255, 90);
-            width: 50px;
+            background-color: transparent;
+            gap: 10px;
             height: 48px;
             border-radius: 25px;
             display: flex;
             justify-content: center;
             align-items: center;
             margin-right: 10px;
-            cursor: pointer;
         }
         .header-icons{
             display: flex;
@@ -407,11 +404,6 @@
             align-items: center;
             margin-top: 24px
         }
-        .filters-container{
-            display: flex;
-            justify-content: center;
-            gap: 70px;
-        }
         .icon-filter-combo-container{
             display: flex;
             gap: 5px;
@@ -506,7 +498,7 @@
         .search-gray-container{
             height: 48px;
             width: 48px;
-            background-color: #b8b8b8;
+            background-color: #f0f0f0;
             border-radius: 5px;
             display: flex;
             flex-direction: column;
@@ -528,7 +520,7 @@
             padding: 5px 0px;
         }
         .search-results-marker-icon-container:hover{
-            background-color: #e7e7e7;
+            background-color: #f0f0f0;
             cursor: pointer;
             border-radius: 10px;
         }
@@ -541,6 +533,18 @@
         }
         .text-btn{
             margin: 0px;
+        }
+        .clear-filter-icon{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: transparent;
+            transition: all ease 0.2s;
+            border-radius: 50%;
+            padding: 5px;
+        }
+        .clear-filter-icon:hover{
+            background-color: rgb(244, 244, 244);
         }
 
         @media only screen and (max-width: 400px){
@@ -668,20 +672,6 @@
             <div class="where-container">
                 <h2 class="header-where">¿Adónde vas?</h2>
             </div>
-            <div class="filters-container">
-                <div class="icon-filter-combo-container">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#000000" d="M575.8 255.5c0 18-15 32.1-32 32.1l-32 0 .7 160.2c0 2.7-.2 5.4-.5 8.1l0 16.2c0 22.1-17.9 40-40 40l-16 0c-1.1 0-2.2 0-3.3-.1c-1.4 .1-2.8 .1-4.2 .1L416 512l-24 0c-22.1 0-40-17.9-40-40l0-24 0-64c0-17.7-14.3-32-32-32l-64 0c-17.7 0-32 14.3-32 32l0 64 0 24c0 22.1-17.9 40-40 40l-24 0-31.9 0c-1.5 0-3-.1-4.5-.2c-1.2 .1-2.4 .2-3.6 .2l-16 0c-22.1 0-40-17.9-40-40l0-112c0-.9 0-1.9 .1-2.8l0-69.7-32 0c-18 0-32-14-32-32.1c0-9 3-17 10-24L266.4 8c7-7 15-8 22-8s15 2 21 7L564.8 231.5c8 7 12 15 11 24z"/></svg>
-                    <span class="icon-text-combo">Casas</span>
-                </div>
-                <div class="icon-filter-combo-container">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M48 0C21.5 0 0 21.5 0 48L0 464c0 26.5 21.5 48 48 48l96 0 0-80c0-26.5 21.5-48 48-48s48 21.5 48 48l0 80 96 0c26.5 0 48-21.5 48-48l0-416c0-26.5-21.5-48-48-48L48 0zM64 240c0-8.8 7.2-16 16-16l32 0c8.8 0 16 7.2 16 16l0 32c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-32zm112-16l32 0c8.8 0 16 7.2 16 16l0 32c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-32c0-8.8 7.2-16 16-16zm80 16c0-8.8 7.2-16 16-16l32 0c8.8 0 16 7.2 16 16l0 32c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-32zM80 96l32 0c8.8 0 16 7.2 16 16l0 32c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-32c0-8.8 7.2-16 16-16zm80 16c0-8.8 7.2-16 16-16l32 0c8.8 0 16 7.2 16 16l0 32c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-32zM272 96l32 0c8.8 0 16 7.2 16 16l0 32c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-32c0-8.8 7.2-16 16-16z"/></svg>
-                    <span class="icon-text-combo">Apartamentos</span>
-                </div>
-                <div class="icon-filter-combo-container">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M32 32c17.7 0 32 14.3 32 32l0 256 224 0 0-160c0-17.7 14.3-32 32-32l224 0c53 0 96 43 96 96l0 224c0 17.7-14.3 32-32 32s-32-14.3-32-32l0-32-224 0-32 0L64 416l0 32c0 17.7-14.3 32-32 32s-32-14.3-32-32L0 64C0 46.3 14.3 32 32 32zm144 96a80 80 0 1 1 0 160 80 80 0 1 1 0-160z"/></svg>
-                    <span class="icon-text-combo">Hotels</span>
-                </div>
-            </div>
             <div class="header-bottom">
                 <div class="input-container">
                     <div class="text-container">
@@ -690,13 +680,7 @@
                     </div>
                     <div class="search-icon-container">
                         <div id="loader-2"></div>
-                        <button class="button-search-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.3" stroke="black" fill="none" stroke-linecap="round" stroke-linejoin="round" id="search-icon">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
-                                <path d="M21 21l-6 -6" />
-                            </svg>
-                        </button>
+                        <div id="clear-filter"></div>
                     </div>
                 </div>
                 <div id="search-results" _="on load hide me"></div>
