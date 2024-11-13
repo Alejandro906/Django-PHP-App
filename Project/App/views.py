@@ -94,6 +94,9 @@ def search_filter(request):
 def clear_filter(request):
     return render(request, 'partials/clear-filter.html', {})
 
+def dashboard(request):
+    return render(request, 'dashboard.html', {})
+
 
 
     

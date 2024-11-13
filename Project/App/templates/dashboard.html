@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - Agencia Inmobiliaria</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
+</head>
+<body>
+  <div class="container-fluid">
+    <!-- Sidebar -->
+    <div class="row">
+      <nav class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
+        <div class="position-sticky">
+          <h5 class="text-center py-3">Dashboard Inmobiliaria</h5>
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a class="nav-link active" href="#">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Propiedades</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Clientes</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Alquileres y Ventas</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <!-- Main content -->
+      <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+          <h1 class="h2">Resumen de Actividades</h1>
+        </div>
+
+        <!-- Row for Stats -->
+        <div class="row">
+          <div class="col-md-4">
+            <div class="card text-white bg-primary mb-3">
+              <div class="card-body">
+                <h5 class="card-title">Total de Propiedades</h5>
+                <p class="card-text" id="total-properties">150</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card text-white bg-success mb-3">
+              <div class="card-body">
+                <h5 class="card-title">Alquileres Activos</h5>
+                <p class="card-text" id="active-rentals">80</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card text-white bg-warning mb-3">
+              <div class="card-body">
+                <h5 class="card-title">Clientes Registrados</h5>
+                <p class="card-text" id="total-clients">20</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Row for Charts -->
+        <div class="row">
+          <div class="col-md-6">
+            <canvas id="rentalsChart"></canvas>
+          </div>
+          <div class="col-md-6">
+            <canvas id="salesChart"></canvas>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    // Gráfico de Alquileres
+    var rentalsCtx = document.getElementById('rentalsChart').getContext('2d');
+    var rentalsChart = new Chart(rentalsCtx, {
+      type: 'bar',
+      data: {
+        labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio'],
+        datasets: [{
+          label: 'Alquileres',
+          data: [10, 19, 3, 5, 2, 3],
+          backgroundColor: 'rgba(54, 162, 235, 0.6)',
+          borderColor: 'rgba(54, 162, 235, 1)',
+          borderWidth: 1
+        }]
+      }
+    });
+
+    // Gráfico de Ventas
+    var salesCtx = document.getElementById('salesChart').getContext('2d');
+    var salesChart = new Chart(salesCtx, {
+      type: 'line',
+      data: {
+        labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio'],
+        datasets: [{
+          label: 'Ventas',
+          data: [10, 15, 9, 6, 11, 13],
+          backgroundColor: 'rgba(75, 192, 192, 0.6)',
+          borderColor: 'rgba(75, 192, 192, 1)',
+          borderWidth: 2
+        }]
+      }
+    });
+  </script>
+</body>
+</html>
