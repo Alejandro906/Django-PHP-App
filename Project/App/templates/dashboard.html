@@ -16,13 +16,7 @@
           <h5 class="text-center py-3">Dashboard Inmobiliaria</h5>
           <ul class="nav flex-column">
             <li class="nav-item">
-              <a class="nav-link active" href="#">Inicio</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Propiedades</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Clientes</a>
+              <a class="nav-link" href="{% url 'form' %}"> Añadir Propiedad</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Alquileres y Ventas</a>
@@ -43,14 +37,14 @@
             <div class="card text-white bg-primary mb-3">
               <div class="card-body">
                 <h5 class="card-title">Total de Propiedades</h5>
-                <p class="card-text" id="total-properties">150</p>
+                <p class="card-text" id="total-properties">{{total}}</p>
               </div>
             </div>
           </div>
           <div class="col-md-4">
             <div class="card text-white bg-success mb-3">
               <div class="card-body">
-                <h5 class="card-title">Alquileres Activos</h5>
+                <h5 class="card-title">Cuidad con mas viviendas</h5>
                 <p class="card-text" id="active-rentals">80</p>
               </div>
             </div>
@@ -70,7 +64,7 @@
           <div class="col-md-6">
             <canvas id="rentalsChart"></canvas>
           </div>
-          <div class="col-md-6">
+          <div class="col-md-6" style="padding-bottom: 10%;">
             <canvas id="salesChart"></canvas>
           </div>
         </div>
@@ -80,21 +74,24 @@
 
   <!-- Scripts -->
   <script>
-    // Gráfico de Alquileres
-    var rentalsCtx = document.getElementById('rentalsChart').getContext('2d');
-    var rentalsChart = new Chart(rentalsCtx, {
-      type: 'bar',
-      data: {
-        labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio'],
-        datasets: [{
-          label: 'Alquileres',
-          data: [10, 19, 3, 5, 2, 3],
-          backgroundColor: 'rgba(54, 162, 235, 0.6)',
-          borderColor: 'rgba(54, 162, 235, 1)',
-          borderWidth: 1
-        }]
-      }
-    });
+     // Gráfico de Alquileres
+      var rentalsCtx = document.getElementById('rentalsChart').getContext('2d');
+      var labels = {{ labels|safe }};
+      var data = {{ data|safe }};
+
+      var rentalsChart = new Chart(rentalsCtx, {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: 'Viviendas',
+            data: data,
+            backgroundColor: 'rgb(164, 255, 90)',
+            borderColor: 'black',
+            borderWidth: 1
+          }]
+        }
+      });
 
     // Gráfico de Ventas
     var salesCtx = document.getElementById('salesChart').getContext('2d');

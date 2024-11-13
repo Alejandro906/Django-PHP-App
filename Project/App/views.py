@@ -4,6 +4,7 @@ from .forms import LoginForm, UserForm, CasaForm, CasaImageForm
 from .models import Casa, Casa_images
 from django.core.paginator import Paginator
 from django.contrib import messages
+from django.db.models import Count
 import time
 import random
 
@@ -95,8 +96,19 @@ def clear_filter(request):
     return render(request, 'partials/clear-filter.html', {})
 
 def dashboard(request):
-    return render(request, 'dashboard.html', {})
-
+    city_data = Casa.objects.values('city').annotate(total=Count('city')).order_by('city')
+    total_casas = len(Casa.objects.all())
+    casa_mas_viviendas = Casa.objects.filter()
+    
+    # Extract the labels (city names) and data (counts)
+    labels = [entry['city'] for entry in city_data]
+    data = [entry['total'] for entry in city_data]
+    
+    return render(request, 'dashboard.html', {
+        'labels': labels,
+        'data': data,
+        'total': total_casas
+    })
 
 
     
