@@ -18,6 +18,7 @@
             background-color: white;
             display: flex;
             gap: 30px;
+            flex-wrap: wrap;
         }
         .left-container-viv {
             margin-left: 30px;
@@ -256,13 +257,36 @@
             gap: 5px;
             align-items: center;
         }
+        .edit-casa-info{
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+            width: fit-content;
+            background-color: rgb(164, 255, 90);
+            color: black;
+            text-decoration: none;
+            padding: 6px;
+            border-radius: 6px;
+            transition: transform 0.08s ease-in-out;
+        }
+        .edit-casa-info p{
+            margin: 0;
+        }
+        .edit-casa-info:hover{
+            box-shadow: inset 0px 1px 5px rgb(121, 188, 66);
+        }
+        .edit-casa-info:active{
+            transform: translateX(1px);
+            transform: translateY(1px);
+        }
 
         @media only screen and (max-width : 400px) {
-            .right-container-viv{
-                display: none;
+            .vivienda-container{
+                margin-left: 0;
             }
             .left-container-viv{
-                margin: 0;
+                margin-left: 0;
             }
             .description-paragraph-container>p{
                 padding: 0px 20px;
@@ -314,6 +338,16 @@
             </div>
         </div>
     </div>
+    {% if request.user.is_authenticated%}
+        <a href="{% url 'edit_house' casa.id %}" class="edit-casa-info">
+            <p>Editar</p>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="20" height="20" stroke-width="1">
+                <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1"></path>
+                <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z"></path>
+                <path d="M16 5l3 3"></path>
+            </svg>
+        </a>
+    {% endif %}
     <div class="vivienda-main-container">
         <div class="vivienda-container">
             <div class="left-container-viv">
@@ -392,8 +426,11 @@
             <div class="right-container-viv">
                 <div class="mail-container">
                     <h2>Enviar un mensaje</h2>
-                    <textarea class="input-mail" placeholder="Hola, ¿podrían enviarme más información de este inmueble?"></textarea>
-                    <button class="contact-button">Contacto</button>
+                    <form action="{% url 'send_email'%}" method="post">
+                        {%csrf_token%}
+                        <textarea class="input-mail" placeholder="Hola, ¿podrían enviarme más información de este inmueble?" name="email-msg"></textarea>
+                        <button class="contact-button" type="submit">Contacto</button>
+                    </form>
                 </div>
             </div>
         </div>

@@ -1,17 +1,25 @@
-{% if results%}
+{% if results %}
 <div class="main-search-container">
     {% for city in results %}
-    <div class="search-results-marker-icon-container" hx-get="{% url 'get_houses'%}?city={{city.city|urlencode}}" hx-target="#content-container" hx-trigger="click" hx-swap="innerHTML" _="on click hide #search-results" hx-indicator="#loader-2">
+    <div class="search-results-marker-icon-container" _="on click 
+    put '{{city.city}}' into #city-input.value
+    put '{{city.city}}' into #city-input-respo.value
+    hide #search-results
+    hide #search-results-respo">
         <div class="search-gray-container">
-            <svg  xmlns="http://www.w3.org/2000/svg"  width="22"  height="22"  viewBox="0 0 24 24"  fill="currentColor"  class="icon icon-tabler icons-tabler-filled icon-tabler-map-pin"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M18.364 4.636a9 9 0 0 1 .203 12.519l-.203 .21l-4.243 4.242a3 3 0 0 1 -4.097 .135l-.144 -.135l-4.244 -4.243a9 9 0 0 1 12.728 -12.728zm-6.364 3.364a3 3 0 1 0 0 6a3 3 0 0 0 0 -6z" /></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="22" height="22" stroke-width="1">
+                <path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"></path>
+                <path d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z"></path>
+            </svg>
         </div>
-        <p style="color: rgb(15, 15, 15);">{{city.city}}, {{city.country}}</p>
+        <p style="color: rgb(15, 15, 15);" id="city-value">{{city.city}},</p>
+        <p> {{city.country}}</p>
     </div>
     {% endfor %}
 </div>
 {% else %}
-
-<p>Oops no hay resultados para esa ciudad</p>
-
+    <div class="error-city-container">
+        <p class="error-citys">Oops no hay resultados para esa ciudad</p>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="20" height="20" stroke-width="1"> <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path> <path d="M21 21l-6 -6"></path> <path d="M10 13v.01"></path> <path d="M10 7v3"></path> </svg>
+    </div>
 {% endif %}
-

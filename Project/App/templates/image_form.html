@@ -112,39 +112,43 @@
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="image-upload-container">
-                <!-- Image slot template (6 placeholders) -->
-                <div class="image-slot" onclick="document.getElementById('file-input-1').click()">Añadir Imagen</div>
-                <input type="file" name="image" id="file-input-1" class="file-input" accept="image/*" onchange="previewImage(event, 1)">
+                <!-- First, display existing images -->
+                {% for image in existing_images %}
+                    <div class="image-slot" onclick="document.getElementById('file-input-{{ forloop.counter }}').click()">
+                        <img src="{{ image.image.url }}" class="image-preview">
+                    </div>
+                    <input type="file" 
+                           name="image" 
+                           id="file-input-{{ forloop.counter }}" 
+                           class="file-input" 
+                           accept="image/*" 
+                           onchange="previewImage(event, {{ forloop.counter }})">
+                {% endfor %}
     
-                <div class="image-slot" onclick="document.getElementById('file-input-2').click()">Añadir Imagen</div>
-                <input type="file" name="image" id="file-input-2" class="file-input" accept="image/*" onchange="previewImage(event, 2)">
-    
-                <div class="image-slot" onclick="document.getElementById('file-input-3').click()">Añadir Imagen</div>
-                <input type="file" name="image" id="file-input-3" class="file-input" accept="image/*" onchange="previewImage(event, 3)">
-    
-                <div class="image-slot" onclick="document.getElementById('file-input-4').click()">Añadir Imagen</div>
-                <input type="file" name="image" id="file-input-4" class="file-input" accept="image/*" onchange="previewImage(event, 4)">
-    
-                <div class="image-slot" onclick="document.getElementById('file-input-5').click()">Añadir Imagen</div>
-                <input type="file" name="image" id="file-input-5" class="file-input" accept="image/*" onchange="previewImage(event, 5)">
-    
-                <div class="image-slot" onclick="document.getElementById('file-input-6').click()">Añadir Imagen</div>
-                <input type="file" name="image" id="file-input-6" class="file-input" accept="image/*" onchange="previewImage(event, 6)">
+                <!-- Then fill remaining slots up to 6 -->
+                {% for i in remaining_slots %}
+                    <div class="image-slot" onclick="document.getElementById('file-input-{{ i }}').click()">
+                        Añadir Imagen
+                    </div>
+                    <input type="file" 
+                           name="image" 
+                           id="file-input-{{ i }}" 
+                           class="file-input" 
+                           accept="image/*" 
+                           onchange="previewImage(event, {{ i }})">
+                {% endfor %}
             </div>
-    
             <button class="submit-btn-images" type="submit">Upload Images</button>
         </form>
     </div>
-
     <script>
         function previewImage(event, slot) {
             const fileInput = document.getElementById(`file-input-${slot}`);
             const file = event.target.files[0];
-
+            
             if (file) {
                 const reader = new FileReader();
                 reader.onload = function(e) {
-                    // Find the associated image slot and display the uploaded image
                     const imageSlot = document.getElementsByClassName('image-slot')[slot - 1];
                     imageSlot.innerHTML = `<img src="${e.target.result}" class="image-preview">`;
                 }

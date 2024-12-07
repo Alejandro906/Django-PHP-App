@@ -9,11 +9,14 @@ urlpatterns = [
     path('get_houses/', views.get_houses, name = 'get_houses'),
     path('', views.home, name = 'home'),
     path('get_house/<int:id>', views.get_house, name = 'get_house'),
-    path('main-map/', views.main_map, name = 'main-map'),
     path('search_values/', views.search_filter, name = 'search_filter'),
     path('image-form/<int:casa_id>', views.second_form, name = 'image-form'),
     path('clear-filter/', views.clear_filter, name = 'clear_filter'),
     path('dashboard/', views.dashboard, name = 'dashboard'),
+    path('edit_house/<int:casa_id>', views.edit_casa_data, name = 'edit_house'),
+    path('edit_house_images/<int:casa_id>', views.edit_casa_images, name = 'edit_house_images'),
+    path('send_email/', views.send_email, name = 'send_email'),
+    path('logout_page/', views.logout_session, name = 'logout')
 ]
 
 

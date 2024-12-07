@@ -49,8 +49,40 @@
             border-radius: 50%;
             animation: 1s anima linear infinite;
             display: none;
+            position: absolute;
+            right: -40px;
+            top: 16px;
         }
         #loader-2.htmx-request{
+            display: block;
+        }
+        .loader-3{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            backdrop-filter: blur(5px);
+            z-index: 100;
+            display: none;
+        }
+        #loader-3{
+            margin: auto;
+            width: 110px;
+            height: 110px;
+            border: 8px solid rgb(226, 226, 226);
+            border-top: 8px solid rgb(164, 255, 90);
+            border-radius: 50%;
+            animation: 1s anima linear infinite;
+            position: absolute;
+            left: 30%;
+            right: 30%;
+            top: 300px;
+        }
+        .loader-3.htmx-request{
             display: block;
         }
 
@@ -144,6 +176,8 @@
             justify-content: space-between;
             align-items: center;
             box-shadow: 2px 0px 8px rgba(0, 0, 0, 0.15);
+            padding: 0px 8px;
+            position: relative;
         }
         .text-container{
             display: flex;
@@ -451,7 +485,7 @@
             gap: 10px;
             position: absolute;
             top: 12px;
-            left: 41%;
+            left: 2px;
             border-radius: 5px;
             padding: 8px 14px;
             z-index: 20;
@@ -547,6 +581,226 @@
             background-color: rgb(244, 244, 244);
         }
 
+        .text-container select{
+            font-family: Nunito Sans;
+            padding: 0px 3px;
+            border-radius: 5px;
+            outline: none;
+            border: rgb(164, 255, 90) 1px solid;
+        }
+        #id_rooms:focus, #id_rating:focus{
+            outline: none;
+            border: black 1px solid;
+        }
+        .filter-btn{
+            border-radius: 50%;
+            background-color: rgb(164, 255, 90);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 8px;
+            margin-left: 16px;
+            border: none;
+            cursor: pointer;
+            border: 1px solid transparent;
+            transition: all 0.1s ease-in-out;
+        }
+        .filter-btn:active{
+            transform: translateX(0.5px) translateY(0.5px);
+        }
+        .filter-btn:hover{
+            border: 1px solid black;
+        }
+        .error-filter{
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            align-items: center;
+            width: 400px;
+        }
+        .error-title{
+            margin: 0;
+            font-family: Nunito Sans;
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+
+        }
+        .error-filter-msg{
+            margin: 0px;
+            font-family: Nunito Sans;
+            font-size: 16px;
+            text-align: center;
+        }
+        .error-citys{
+            font-family: Nunito Sans;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        .responsive-filters{
+            display: block;
+        }
+        .responsive-filters{
+                position: fixed;
+                right: -35%;
+                top: 0;
+                bottom: 50px;
+                width: 35%;
+                background-color: white;
+                display: flex;
+                flex-direction: column;
+                z-index: 20;
+                border-radius: 10px;
+                border: 1px solid rgb(210, 210, 210);
+                transition: all ease-in-out 0.25s;
+
+            }
+            .filters-on{
+                right: 0;
+            }
+            #city-input-respo{
+                width: 63%;
+                font-size: 16px;
+                border: 1px solid rgb(164, 255, 90);
+                border-radius: 3px;
+                padding: 3px 4px;
+            }
+            .filter-icon{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                top: 40%;
+                bottom: 40%;
+                position: absolute;
+                left: -42px;
+                width: 40px;
+                background-color: green;
+                background-color: white;
+                border: 1px solid rgb(210, 210, 210);
+                border-radius: 3px;
+            }
+            .filter-form-responsive{
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                gap: 30px;
+
+            }
+            .filter-form-responsive span{
+                font-size: 16px;
+
+            }
+            .filter-form-container-respo{
+                position: relative;
+            }
+            .filter-form-responsive select{
+                width: 65%;
+                font-size: 16px;
+
+            }
+            #search-results-respo{
+                margin-left: 3px;
+                background-color: white;
+                width: 95%;
+                position: absolute;
+                top: 105px;
+                padding: 4px;
+                border-radius: 10px;
+                box-shadow: 0px 0px 12px rgb(0, 0, 0, 0.1);
+                min-height: 70px;
+                max-height: 120px;
+                overflow-y: scroll;
+            }
+            .search-results-marker-icon-container p{
+                font-size: 14px;
+            }
+            .search-results-marker-icon-container svg{
+                width: 20px;
+                height: 20px;
+            }
+            .title-filter{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 0px 18px;
+            }
+            .title-filter h2{
+                font-family: Nunito Sans;
+                font-size: 22px;
+            }
+            .filter-btn-respo{
+                border-radius: 5px;
+                background-color: rgb(164, 255, 90);
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 8px;
+                border: none;
+                cursor: pointer;
+                width: 60%;
+                margin: auto;
+            }
+            .filter-btn-respo p{
+                margin: 0;
+                font-family: Nunito Sans;
+                font-size: 16px;
+                font-weight: 500;
+            }
+            .main-search-container{
+                gap: 0px;
+            }
+            .text-container{
+                display: flex;
+                justify-content: space-between;
+                flex-direction: row;
+                align-items: center;
+                position: relative;
+            }
+            .clear-city-input{
+                position: absolute;
+                background-color: transparent;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 3px;
+                border-radius: 50%;
+                right: 2%;
+                cursor: pointer;
+            }
+            .clear-city-input:hover{
+                background-color: #eeeeee;
+            }
+            .error-city-container{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 20px;
+            }
+            .clear-filters{
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .clear-btn{
+                width: 56%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 8px;
+                background-color: rgb(164, 255, 90);
+                text-decoration: none;
+                color: black;
+                border-radius: 5px;
+                margin-top: 20px;
+                
+            }
+            .clear-btn p{
+                margin: 0;
+                font-family: Nunito Sans;
+            }
+
+
         @media only screen and (max-width: 400px){
             .center-span-icon-container,
             .header-where, 
@@ -567,8 +821,7 @@
                 margin: 0;
             }
             #search-results{
-                width: 70%;
-                padding: 10px 18px 10px 5px;
+                display: none;
             }
             .login-form-container{
                 width: 80%;
@@ -588,13 +841,123 @@
                 width: 0;
                 height: 0;
             }
+            .input-container{
+                display: none;
+            }
+            .responsive-filters{
+                position: fixed;
+                right: -71%;
+                top: 0;
+                bottom: 50px;
+                width: 70%;
+                background-color: white;
+                display: flex;
+                flex-direction: column;
+                z-index: 20;
+                border-radius: 10px;
+                border: 1px solid rgb(210, 210, 210);
+                transition: all ease-in-out 0.25s;
+
+            }
+            .filters-on{
+                right: 0;
+            }
+            .filter-icon{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                top: 40%;
+                position: absolute;
+                left: -41px;
+                height: 40px;
+                width: 40px;
+                background-color: green;
+                background-color: white;
+                border: 1px solid rgb(210, 210, 210);
+                border-radius: 3px;
+            }
+            .filter-form-responsive{
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                gap: 30px;
+
+            }
+            .filter-form-container-respo{
+                position: relative;
+            }
+            .filter-form-responsive select{
+                width: 65%;
+                font-size: 13px;
+
+            }
+            #search-results-respo{
+                margin-left: 3px;
+                background-color: white;
+                width: 95%;
+                position: absolute;
+                top: 105px;
+                padding: 4px;
+                border-radius: 10px;
+                box-shadow: 0px 0px 12px rgb(0, 0, 0, 0.1);
+                min-height: 70px;
+                max-height: 120px;
+                overflow-y: scroll;
+            }
+            .search-results-marker-icon-container p{
+                font-size: 14px;
+            }
+            .search-results-marker-icon-container svg{
+                width: 20px;
+                height: 20px;
+            }
+            .title-filter{
+                display: flex;
+                justify-content: space-evenly;
+                align-items: center;
+            }
+            .title-filter h2{
+                font-family: Nunito Sans;
+                font-size: 22px;
+            }
+            .filter-btn-respo{
+                border-radius: 5px;
+                background-color: rgb(164, 255, 90);
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 8px;
+                border: none;
+                cursor: pointer;
+                width: 60%;
+                margin: auto;
+            }
+            .filter-btn-respo p{
+                margin: 0;
+                font-family: Nunito Sans;
+                font-size: 16px;
+                font-weight: 500;
+            }
+            .main-search-container{
+                gap: 0px;
+            }
+            .text-container{
+                display: flex;
+                justify-content: space-between;
+                flex-direction: row;
+                align-items: center;
+            }
+            .filter-form-responsive span{
+                font-size: 13px;
+
+            }
 
         }
     </style>
 </head>
 {% for msg in messages%}
     {% if msg.tags == 'success'%}
-    <div class="pop-up-message" _="on load wait 3s then transition my opacity to 0 over 2s then remove me" style="border: 1px solid green;">
+    <div class="pop-up-message" _="on load wait 2s then transition my opacity to 0 over 2s then remove me" style="border: 1px solid rgb(164, 255, 90);">
         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-checkbox" width="26" height="26" viewBox="0 0 24 24" stroke-width="1" stroke="#00b341" fill="none" stroke-linecap="round" stroke-linejoin="round">
             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
             <path d="M9 11l3 3l8 -8" />
@@ -613,6 +976,7 @@
         </div>
     {% endif %}
 {%endfor%}
+
 <div class="login-form-container desactive-login-form">
     <h1>Inicia session</h1>
     <form action="{%url 'login_form'%}" method="post">
@@ -638,18 +1002,17 @@
     </form>
 </div>
 
+
+
 <body id="body">
+    <div class="loader-3">
+        <div id="loader-3"></div>
+    </div>
     <div class="main-container">
         <div class="header-container">
             <div class="header-top">
                 <div class="logo-container">
                     <img class="logo" src="{% static 'logo.png'%}" alt="">
-                </div>
-                <div class="center-container">
-                    <div class="center-span-icon-container" hx-get="{% url 'main-map' %}" hx-target="#body" hx-swap="outerHTML" _="on click add .give-map-page to #body">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M352 256c0 22.2-1.2 43.6-3.3 64l-185.3 0c-2.2-20.4-3.3-41.8-3.3-64s1.2-43.6 3.3-64l185.3 0c2.2 20.4 3.3 41.8 3.3 64zm28.8-64l123.1 0c5.3 20.5 8.1 41.9 8.1 64s-2.8 43.5-8.1 64l-123.1 0c2.1-20.6 3.2-42 3.2-64s-1.1-43.4-3.2-64zm112.6-32l-116.7 0c-10-63.9-29.8-117.4-55.3-151.6c78.3 20.7 142 77.5 171.9 151.6zm-149.1 0l-176.6 0c6.1-36.4 15.5-68.6 27-94.7c10.5-23.6 22.2-40.7 33.5-51.5C239.4 3.2 248.7 0 256 0s16.6 3.2 27.8 13.8c11.3 10.8 23 27.9 33.5 51.5c11.6 26 20.9 58.2 27 94.7zm-209 0L18.6 160C48.6 85.9 112.2 29.1 190.6 8.4C165.1 42.6 145.3 96.1 135.3 160zM8.1 192l123.1 0c-2.1 20.6-3.2 42-3.2 64s1.1 43.4 3.2 64L8.1 320C2.8 299.5 0 278.1 0 256s2.8-43.5 8.1-64zM194.7 446.6c-11.6-26-20.9-58.2-27-94.6l176.6 0c-6.1 36.4-15.5 68.6-27 94.6c-10.5 23.6-22.2 40.7-33.5 51.5C272.6 508.8 263.3 512 256 512s-16.6-3.2-27.8-13.8c-11.3-10.8-23-27.9-33.5-51.5zM135.3 352c10 63.9 29.8 117.4 55.3 151.6C112.2 482.9 48.6 426.1 18.6 352l116.7 0zm358.1 0c-30 74.1-93.6 130.9-171.9 151.6c25.5-34.2 45.2-87.7 55.3-151.6l116.7 0z"/></svg>
-                        <span class="center-text">Mapa</span>
-                    </div>
                 </div>
                 {% if request.user.is_authenticated %}
                     <a class="user-profile-container" href="{% url 'dashboard' %}">
@@ -670,20 +1033,132 @@
                 {% endif %}
             </div>
             <div class="where-container">
-                <h2 class="header-where">¿Adónde vas?</h2>
+                <h2 class="header-where">¿Busca Tu Destino?</h2>
             </div>
-            <div class="header-bottom">
-                <div class="input-container">
+            <div class="header-bottom" style="display: none;">
+                <form hx-get="{% url 'get_houses'%}" hx-trigger="submit" class="input-container" hx-target="#content-container" hx-indicator="#loader-2">
+                    <!-- City Input -->
                     <div class="text-container">
-                        <span>Destion</span>
-                        <input type="text" placeholder="Buscar destinos" hx-get="{% url 'search_filter' %}" hx-trigger="keyup" hx-target="#search-results" name="search" hx-swap="innerHTML" _="on keyup if my value.length is 0 then hide #search-results else wait 600ms then show #search-results" id="search-input" autocomplete="off">
+                        <span>Ciudad</span>
+                        <input type="text" placeholder="Ciudad" id="city-input" hx-trigger="keyup" hx-get="{% url 'search_filter' %}" name="city" hx-target="#search-results" hx-swap="innerHTML" _="on keyup if my value.length is 0 then hide #search-results else wait 600ms then show #search-results" autocomplete="off">
                     </div>
-                    <div class="search-icon-container">
-                        <div id="loader-2"></div>
-                        <div id="clear-filter"></div>
+            
+                    <!-- Rooms Dropdown -->
+                    <div class="text-container">
+                        <span>Habitaciones</span>
+                        {{filter.form.rooms}}
                     </div>
-                </div>
+            
+                    <!-- Rating Dropdown -->
+                    <div class="text-container">
+                        <span>Calificación</span>
+                        {{filter.form.rating}}
+                    </div>
+                    <button type="submit" class="filter-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-linecap="round" stroke-linejoin="round" width="20" height="20" stroke-width="1">
+                            <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path>
+                            <path d="M21 21l-6 -6"></path>
+                        </svg>
+                    </button>
+                    <div id="loader-2"></div>
+                </form>
                 <div id="search-results" _="on load hide me"></div>
+            </div>
+        </div>
+        <div class="responsive-filters">
+            <div class="filter-icon" _="on click toggle .filters-on on .responsive-filters">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="30" height="30" stroke-width="1">
+                    <path d="M4 10a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"></path>
+                    <path d="M6 4v4"></path>
+                    <path d="M6 12v8"></path>
+                    <path d="M10 16a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"></path>
+                    <path d="M12 4v10"></path>
+                    <path d="M12 18v2"></path>
+                    <path d="M16 7a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"></path>
+                    <path d="M18 4v1"></path>
+                    <path d="M18 9v11"></path>
+                </svg>
+            </div>
+            <div class="filter-form-container-respo">
+                <div class="title-filter">
+                    <h2>Filtrar</h2>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="1">
+                        <path d="M4 6l9 0"></path>
+                        <path d="M4 12l7 0"></path>
+                        <path d="M4 18l7 0"></path>
+                        <path d="M15 15l3 3l3 -3"></path>
+                        <path d="M18 6l0 12"></path>
+                    </svg>
+                </div>
+                <form hx-get="{% url 'get_houses'%}" hx-trigger="submit" class="filter-form-responsive" hx-target="#content-container" hx-indicator=".loader-3">
+                    <!-- City Input -->
+                    <div class="text-container">
+                        <span>Ciudad</span>
+                        <input type="text" placeholder="Ciudad" id="city-input-respo" hx-trigger="keyup" hx-get="{% url 'search_filter' %}" name="city" hx-target="#search-results-respo" hx-swap="innerHTML" _="on keyup if my value.length is 0 then hide #search-results-respo else wait 600ms then show #search-results-respo" autocomplete="off">
+                        <div class="clear-city-input" _="on click put '' into #city-input-respo.value">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="16" height="16" stroke-width="1"> <path d="M18 6l-12 12"></path> <path d="M6 6l12 12"></path></svg> 
+                        </div>
+                    </div>
+            
+                    <!-- Rooms Dropdown -->
+                    <div class="text-container">
+                        <span>Habitaciones</span>
+                        {{filter.form.rooms}}
+                    </div>
+            
+                    <!-- Rating Dropdown -->
+                    <div class="text-container">
+                        <span>Calificación</span>
+                        {{filter.form.rating}}
+                    </div>
+                    <div class="text-container">
+                        <span>Bañera</span>
+                        {{filter.form.tub}}
+                    </div>
+                    <div class="text-container">
+                        <span>Televison</span>
+                        {{filter.form.TV}}
+                    </div>
+                    <div class="text-container">
+                        <span>Parking</span>
+                        {{filter.form.parking}}
+                    </div>
+                    <div class="text-container">
+                        <span>Wifi</span>
+                        {{filter.form.wifi}}
+                    </div>
+                    <div class="text-container">
+                        <span>Aire Accondicionado</span>
+                        {{filter.form.AC}}
+                    </div>
+                    <div class="text-container">
+                        <span>Cocina</span>
+                        {{filter.form.kitchen}}
+                    </div>
+
+
+                    <button type="submit" class="filter-btn-respo" _="on click remove .filters-on from .responsive-filters then on click go to the top of the body smoothly">
+                        <p>Buscar</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-linecap="round" stroke-linejoin="round" width="20" height="20" stroke-width="1">
+                            <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path>
+                            <path d="M21 21l-6 -6"></path>
+                        </svg>
+                    </button>
+                    <div id="loader-2"></div>
+                </form>
+                <div class="clear-filters">
+                    <a class="clear-btn" href="{% url 'home'%}">
+                        <p>Borar Filtros</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="20" height="20" stroke-width="1">
+                            <path d="M4 7l16 0"></path>
+                            <path d="M10 11l0 6"></path>
+                            <path d="M14 11l0 6"></path>
+                            <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"></path>
+                            <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"></path>
+                        </svg>
+                    </a>
+                </div>
+                <div id="search-results-respo" _="on load hide me"></div>
             </div>
         </div>
         <div id="content-container">

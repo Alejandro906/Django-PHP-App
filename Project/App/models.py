@@ -26,26 +26,39 @@ class Casa(models.Model):
     kitchen = models.BooleanField(default=False)
     AC = models.BooleanField(default=False)
     wifi = models.BooleanField(default=False)
-    date_uploaded = models.DateTimeField(auto_now_add=True , null = True, blank=True)
+    date_uploaded = models.DateTimeField(auto_now_add=True, null=True, blank=True)
     recommended = models.BooleanField(default=False, null=True, blank=True)
     square_meter = models.IntegerField(null=True, blank=True)
     parking = models.BooleanField(default=False)
     TV = models.BooleanField(default=False)
     tub = models.BooleanField(default=False)
-    
 
     def __str__(self):
         return f"casa en {self.country} con direccion {self.address}"
 
     def save(self, *args, **kwargs):
-        token = 'pk.eyJ1Ijoiam9yZ2UyMiIsImEiOiJjbTIyY2s1MncwNXZ6MmlzZTRyZ3BocjFmIn0.JC_oYwALzZQ7pIsgDdJ0Hw'
-        g = geocoder.mapbox(self.address, key = token)
-        g = g.latlng
-        self.latitud = g[0]
-        self.longitud = g[1]
-
+        try:
+            token = 'pk.eyJ1Ijoiam9yZ2UyMiIsImEiOiJjbTIyY2s1MncwNXZ6MmlzZTRyZ3BocjFmIn0.JC_oYwALzZQ7pIsgDdJ0Hw'
+            g = geocoder.mapbox(self.address, key=token)
+            
+            if g and g.latlng:
+                self.latitud = g.latlng[0]
+                self.longitud = g.latlng[1]
+            else:
+                # If geocoding fails, keep the existing coordinates or set to None
+                if not self.latitud or not self.longitud:
+                    self.latitud = None
+                    self.longitud = None
+        except Exception as e:
+            # Log the error if you have logging configured
+            print(f"Geocoding error: {str(e)}")
+            # Keep existing coordinates or set to None
+            if not self.latitud or not self.longitud:
+                self.latitud = None
+                self.longitud = None
+        
         return super(Casa, self).save(*args, **kwargs)
-    
+
     class Meta:
         ordering = ['-id']
     

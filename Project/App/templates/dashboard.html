@@ -5,9 +5,61 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard - Agencia Inmobiliaria</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+  <script src="https://unpkg.com/hyperscript.org@0.9.13"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet">
+  <style>
+    .pop-up-message{
+            display: flex;
+            gap: 10px;
+            position: absolute;
+            top: 12px;
+            left: 2px;
+            border-radius: 5px;
+            padding: 8px 14px;
+            z-index: 20;
+            background-color: white;
+            padding: 8px 14px;
+            padding-right: 22px;
+            box-shadow: 0px 2px 6px rgb(0, 0, 0, 0.1);
+            align-items: center;
+            
+        }
+        .pop-up-message svg{
+            cursor:auto;
+        }
+        .pop-up-message p{
+            margin: 0px;
+            color: rgb(97, 97, 97);
+            font-family: Nunito Sans;
+            font-size: 16px;
+        }
+  </style>
 </head>
 <body>
+  {% for msg in messages%}
+    {% if msg.tags == 'success'%}
+    <div class="pop-up-message" _="on load wait 2s then transition my opacity to 0 over 2s then remove me" style="border: 1px solid rgb(164, 255, 90);">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-checkbox" width="26" height="26" viewBox="0 0 24 24" stroke-width="1" stroke="#00b341" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <path d="M9 11l3 3l8 -8" />
+            <path d="M20 12v6a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h9" />
+        </svg>
+        <p>{{msg}}</p>
+    </div>
+    {% else %}
+        <div class="pop-up-message" _="on load wait 3s then transition my opacity to 0 over 2s then remove me" style="border: 1px solid red;">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="26" height="26" viewBox="0 0 24 24" stroke-width="1" stroke="#ff2825" fill="rgb(255, 141, 141)" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                <path d="M18 6l-12 12" />
+                <path d="M6 6l12 12" />
+            </svg>
+            <p>{{msg}}</p>
+        </div>
+    {% endif %}
+{%endfor%}
   <div class="container-fluid">
     <!-- Sidebar -->
     <div class="row">
@@ -19,7 +71,10 @@
               <a class="nav-link" href="{% url 'form' %}"> Añadir Propiedad</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Alquileres y Ventas</a>
+              <a class="nav-link" href="{% url 'home' %}">Pagina Principal</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'logout' %}">Logout</a>
             </li>
           </ul>
         </div>
@@ -31,8 +86,7 @@
           <h1 class="h2">Resumen de Actividades</h1>
         </div>
 
-        <!-- Row for Stats -->
-        <div class="row">
+        <div class="row justify-content-center">
           <div class="col-md-4">
             <div class="card text-white bg-primary mb-3">
               <div class="card-body">
@@ -45,29 +99,18 @@
             <div class="card text-white bg-success mb-3">
               <div class="card-body">
                 <h5 class="card-title">Cuidad con mas viviendas</h5>
-                <p class="card-text" id="active-rentals">80</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="card text-white bg-warning mb-3">
-              <div class="card-body">
-                <h5 class="card-title">Clientes Registrados</h5>
-                <p class="card-text" id="total-clients">20</p>
+                <p class="card-text" id="active-rentals">{{ciudad_con_mas}} {{num_casa_con_mas}}</p>
               </div>
             </div>
           </div>
         </div>
 
         <!-- Row for Charts -->
-        <div class="row">
-          <div class="col-md-6">
-            <canvas id="rentalsChart"></canvas>
+        <div class="row justify-content-center">
+          <div class="col-md-8 mx-auto">
+              <canvas id="rentalsChart" class="w-100"></canvas>
           </div>
-          <div class="col-md-6" style="padding-bottom: 10%;">
-            <canvas id="salesChart"></canvas>
-          </div>
-        </div>
+      </div>
       </main>
     </div>
   </div>
@@ -92,22 +135,6 @@
           }]
         }
       });
-
-    // Gráfico de Ventas
-    var salesCtx = document.getElementById('salesChart').getContext('2d');
-    var salesChart = new Chart(salesCtx, {
-      type: 'line',
-      data: {
-        labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio'],
-        datasets: [{
-          label: 'Ventas',
-          data: [10, 15, 9, 6, 11, 13],
-          backgroundColor: 'rgba(75, 192, 192, 0.6)',
-          borderColor: 'rgba(75, 192, 192, 1)',
-          borderWidth: 2
-        }]
-      }
-    });
   </script>
 </body>
 </html>

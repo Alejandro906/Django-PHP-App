@@ -1,3 +1,4 @@
+{% if casas %}
 {% for casa in casas %}
 <a href="{% url 'get_house' casa.id %}" class="house-container">
     {% with casa.casa_images.first as image %}
@@ -27,28 +28,22 @@
     </div>
     
     {% if forloop.last and casas.has_next %}
-        {% if city %}
-        <div hx-get="{% url 'get_houses' %}?page={{ casas.next_page_number }}&city={{city}}"
-            hx-trigger="intersect once"
-            hx-swap="beforeend"
-            hx-indicator="#loader"
-            hx-target="#content-container"
-            class="div-to-load-more">
-        </div>
-        {% else %}
-        <div hx-get="{% url 'get_houses' %}?page={{ casas.next_page_number }}"
-            hx-trigger="intersect once"
-            hx-swap="beforeend"
-            hx-indicator="#loader"
-            hx-target="#content-container"
-            class="div-to-load-more">
-        </div>
-        {% endif %}
+    <div hx-get="{% url 'get_houses' %}?city={{ request.GET.city }}&rooms={{ request.GET.rooms }}&rating={{ request.GET.rating }}&page={{ casas.next_page_number }}"
+        hx-trigger="intersect once"
+        hx-swap="beforeend"
+        hx-indicator="#loader"
+        hx-target="#content-container"
+        class="div-to-load-more">
+    </div>
 
     {% endif %}
 </a>
 {% endfor %}
 
-{% if city %}
-    <div hx-get="{% url 'clear_filter' %}" hx-target="#clear-filter" hx-trigger="load"></div>
+{% else %}
+<div class="error-filter">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="40" height="40" stroke-width="1"> <path d="M8 9l5 5v7h-5v-4m0 4h-5v-7l5 -5m1 1v-6a1 1 0 0 1 1 -1h10a1 1 0 0 1 1 1v17h-8"></path> <path d="M13 7l0 .01"></path> <path d="M17 7l0 .01"></path> <path d="M17 11l0 .01"></path> <path d="M17 15l0 .01"></path></svg>
+    <p class="error-title">No se encontraron resultados para el filtro aplicado.</p>
+    <p class="error-filter-msg">No se encontraron resultados para el filtro aplicado. Por favor, intenta usar un filtro diferente o verifica que el filtro seleccionado coincida con las características de las casas disponibles en nuestra base de datos.</p>
+</div>
 {% endif %}

@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'App'
+    'App',
+    'django_filters'
 ]
 
 AUTH_USER_MODEL = 'App.User'
@@ -134,3 +135,14 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
+# email = desarolloservidor1@gmail.com
+# password = Desarollo_1
+# app_password_gmail = whpl kuex eoww mmat
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'  # Use the SMTP server of your email provider
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'desarolloservidor1@gmail.com'  # Replace with your email address
+EMAIL_HOST_PASSWORD = 'efit skoj kkjc dfca'  # Replace with your email password
