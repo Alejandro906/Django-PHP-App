@@ -8,7 +8,7 @@ class CasaFilter(django_filters.FilterSet):
         (1, '1 Habitación'),
         (2, '2 Habitaciones'),
         (3, '3 Habitaciones'),
-        (4, '4+ Habitaciones')
+        (4, '4 Habitaciones')
     ]
 
     RATING_CHOICES = [
