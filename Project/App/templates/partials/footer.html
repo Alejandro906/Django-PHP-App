@@ -1,59 +1,12 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="{% static 'styles/footer.css'%}">
 </head>
-<style>
-    .footer{
-        display: flex;
-        border-top: 1px solid #9b9b9b;
-        height: 50px;
-        justify-content: space-around;
-        font-size: 13px;
-        align-items: center;
-        position: fixed;
-        bottom: 0;
-        right: 0;
-        left: 0;
-        background-color: white;
-        font-family: Nunito Sans;
-    }
-    .left-section{
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
-        max-width: 575px;
-        color: #666666;
-    }
-    .right-section{
-        display: flex;
-        justify-content: end;
-        width: 100%;
-        max-width: 300px;
-        font-weight: bold;
-        color: black;
-        align-items: center;
-        gap: 20px;
-    }
-    .right-section>span, .left-section>span{
-        cursor: pointer;
-    }
-    .world-icon-container{
-        display: flex;
-        gap: 5px;
-        align-items: center;
-    }
-    .world-icon-container>svg{
-        padding: 0;
-    }
-    .currency-container{
-        display: flex;
-        gap: 3px;
-        align-items: center;
-    }
-</style>
 <body>
     <div class="footer">
         <div class="left-section">

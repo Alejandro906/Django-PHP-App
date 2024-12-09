@@ -1,0 +1,85 @@
+body{
+    font-family: 'Nunito Sans';
+}
+.image-upload-container {
+    max-width: 340px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.image-slot {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px dotted #5a9bd4; /* Slightly dark blue */
+    background-color: #dbe9f6; /* Light blue */
+    color: #5a9bd4;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.file-input {
+    display: none;
+}
+
+/* Image preview styling */
+.image-preview {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+}
+.images-container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+form{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+form>button{
+    margin-top: 20px;
+    font-family: 'Nunito Sans';
+}
+.submit-btn-images{
+    margin-top: 20px;
+    padding: 7px 40px 7px 40px;
+    border-radius: 15px;
+    font-size: 14px;
+    font-weight: 600;
+    border: 1px solid black;
+    background-color: transparent;
+    cursor: pointer;
+    transition: all ease 0.3s;
+}
+.submit-btn-images:hover{
+    background-color: black;
+    color: white;
+}
+.progress-bar {
+    display: flex;
+    width: 100%;
+    max-width: 340px;
+    height: 5px;
+    gap: 5px;
+    margin-bottom: 20px;
+}
+.progress-bar div {
+    flex: 1;
+    background-color: #e0e0e0;
+    transition: background-color 0.3s;
+}
+.progress-bar .active {
+    background-color: black;
+}
+.nav-lines{
+    display: flex;
+    justify-content: center;
+}

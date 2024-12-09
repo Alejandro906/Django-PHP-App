@@ -185,7 +185,6 @@ from django.core.mail import EmailMessage
 def send_email(request):
     if request.method == 'POST':
         email_message = request.POST.get('email-msg', '')
-        print(f"Email message: {email_message}")
         
         email = EmailMessage(
             "BnbHousing Request",  # Subject

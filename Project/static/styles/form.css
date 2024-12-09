@@ -1,0 +1,195 @@
+body{
+    font-family: 'Nunito Sans';
+}
+.admin-form-container{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+}
+.form-container{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 340px;
+    background-color: white;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    padding: 20px;
+}
+.features-container{
+    display: flex;
+    width: 100%;
+    max-width: 340px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+.cara-div{
+    width: 100%;
+    max-width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgb(205, 205, 205);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all ease 0.25s;
+    flex-direction: column;
+    gap: 10px;
+}
+.cara-div.selected{
+    background-color: rgb(190, 255, 190);
+    border-color: black;
+}
+.cara-div>label{
+    font-weight: 700;
+    font-size: 15px;
+    cursor: pointer;
+}
+.cara-div>input{
+    display: none;
+}
+.cara-div:hover{
+    border: 1px solid black;
+}
+.cara-div>svg{
+    margin-top: 3px;
+}
+.span-title-header{
+    font-size: 18px;
+    font-weight: 800;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+.div-dor-bano{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 10px;
+}
+.div-rooms-bath{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 100px;
+    height: 50px;
+    border-bottom: 1px solid #c2c2c2;
+}
+.rooms-bath-container{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 100%;
+}
+.plus-minus-div>input{
+    border: none;
+    width: 30px;
+    margin-left: 20px;
+}
+.plus-minus-div>button{
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    align-items: center;
+    border: 1px solid black;
+    cursor: pointer;
+    background-color: transparent;
+}
+.location-container{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+}
+.locate-svg-div>input{
+    width: 110px;
+    border-radius: 10px;
+    border: 1px solid #9a9a9a;
+    padding: 3px;
+    padding-left: 5px;
+    font-family: 'Nunito Sans';
+    font-size: 12px;
+}
+.locate-svg-div{
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
+.recom-meter-container{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+    margin-top: 10px;
+}
+.recom-meter-div{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.recom-meter-div>input{
+    width: 110px;
+    border-radius: 10px;
+    border: 1px solid #9a9a9a;
+    padding: 3px;
+    padding-left: 5px;
+    font-family: 'Nunito Sans';
+    font-size: 12px;
+}
+.general-container{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+}
+textarea{
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid #9a9a9a;
+    padding: 3px;
+    padding-left: 5px;
+    font-family: 'Nunito Sans';
+    font-size: 12px;
+}
+.submit-btn{
+    margin-top: 20px;
+    padding: 7px 50px 7px 50px;
+    border-radius: 15px;
+    font-size: 16px;
+    font-weight: 600;
+    border: 1px solid black;
+    background-color: transparent;
+    cursor: pointer;
+    transition: all ease 0.3s;
+}
+.submit-btn:hover{
+    background-color: black;
+    color: white;
+}
+.progress-bar {
+    display: flex;
+    width: 100%;
+    max-width: 340px;
+    height: 5px;
+    gap: 5px;
+    margin-bottom: 20px;
+}
+.progress-bar div {
+    flex: 1;
+    background-color: #e0e0e0;
+    transition: background-color 0.3s;
+}
+.progress-bar .active {
+    background-color: black;
+}
+
+@media only screen and (max-width: 400px){
+    .form-container{
+        box-shadow: none;
+    }
+}

@@ -1,0 +1,39 @@
+.viv-header-container{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: white;
+        height: 68px;
+        border-bottom: 1px solid #cfcfcf;
+    }
+    .left-header-vivienda-container{
+        margin-left: 100px;
+    }
+    .right-header-vivienda-container{
+        display: flex;
+        gap: 40px;
+        align-items: center;
+        cursor: pointer;
+        margin-right: 100px;
+    }
+    .globe-con, .arrow-cont{
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        cursor: pointer;
+    }
+    .logo-container-viv{
+        width: 100%;
+        max-width: 150px;
+        display: flex;
+        justify-content: center;
+        padding: 5px 8px;
+        border-radius: 10px;
+        background-color: white;
+    }
+    .logo-img{
+        width: 120px;
+        height: 50px;
+        object-fit: cover;
+        cursor: pointer;
+    }

@@ -1,42 +1,17 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard - Agencia Inmobiliaria</title>
+  <link rel="stylesheet" href="{% static 'styles/dashboard.css'%}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
   <script src="https://unpkg.com/hyperscript.org@0.9.13"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet">
-  <style>
-    .pop-up-message{
-            display: flex;
-            gap: 10px;
-            position: absolute;
-            top: 12px;
-            left: 2px;
-            border-radius: 5px;
-            padding: 8px 14px;
-            z-index: 20;
-            background-color: white;
-            padding: 8px 14px;
-            padding-right: 22px;
-            box-shadow: 0px 2px 6px rgb(0, 0, 0, 0.1);
-            align-items: center;
-            
-        }
-        .pop-up-message svg{
-            cursor:auto;
-        }
-        .pop-up-message p{
-            margin: 0px;
-            color: rgb(97, 97, 97);
-            font-family: Nunito Sans;
-            font-size: 16px;
-        }
-  </style>
 </head>
 <body>
   {% for msg in messages%}

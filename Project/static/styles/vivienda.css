@@ -1,0 +1,308 @@
+.vivienda-main-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background-color: #e1e1e1;
+}
+.vivienda-container {
+    background-color: white;
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+.left-container-viv {
+    margin-left: 30px;
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+}
+.right-container-viv {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+.location-container {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+.carousel {
+    margin-top: 15px;
+}
+.carousel-cell {
+    width: 100%;
+    height: 430px;
+    background: white;
+    border-radius: 5px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+}
+.carousel-cell img {
+    width: 65%;
+    height: 100%;
+    object-fit: cover;
+}
+.mail-container {
+    width: 290px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 20px;
+    gap: 10px;
+    height: min-content;
+    margin-top: 20px;
+}
+.mail-container h2 {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    margin-top: 0;
+}
+.input-mail {
+    width: 90%;
+    height: 120px;
+    border-radius: 5px;
+    border: 1px solid #d0d0d0;
+    padding: 5px;
+    font-size: 1rem;
+}
+.contact-button {
+    width: 94%;
+    padding: 10px;
+    background-color: rgb(164, 255, 90);
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    font-family: 'Nunito Sans';
+    font-weight: 600;
+}
+body {
+    font-family: 'Nunito Sans', sans-serif;
+}
+.span-title-descBox{
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+}
+.desc-title{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.span-room-bathroom{
+    font-weight: 500;
+}
+.feature-container{
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    max-width: 600px;
+}
+.feature-icon-container{
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+.iconFeature-box{
+    display: flex;
+    gap: 8px;
+    width: 100%;
+    max-width: 240px;
+    align-items: center;
+}
+.iconFeature-box-cross{
+    display: flex;
+    gap: 8px;
+    width: 100%;
+    max-width: 240px;
+    align-items: center;
+    text-decoration: line-through;
+}
+.iconFeature-box>span{
+    font-size: 17px;
+    font-weight: 500;
+}
+.gray-box-container{
+    display: flex;
+    padding: 6px 0px;
+    background-color: #d0d0d0;
+    align-items: center;
+    border-radius: 5px;
+    width: 100%;
+    margin-top: 10px;
+}
+.svg-info-container{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-left: 25px;
+}
+.description-paragraph-container>p{
+    font-family: Nunito Sans, sans-serif;
+    font-size: 16px;
+    line-height: 28px;
+}
+.description-paragraph-container{
+    border-bottom: 1px solid #d0d0d0;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+.map-container-box{
+    width: 100%;
+    height: 430px;
+    margin: 40px 0px;
+    border-radius: 10px;
+}
+.filter-page-container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgb(164, 255, 90);
+    width: 100%;
+}
+.filter-header-container{
+    height: min-content;
+    width: 100%;
+    max-width: 95%;
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+.nav-bar-bnb{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.user-profile-container{
+    display: flex;
+    gap: 10px;
+    border: 0.5px solid rgba(0, 0, 0, 0.15);
+    align-items: center;
+    padding: 6px 10px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+.user-profile-container:hover{
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+}
+.menu-icon{
+    width: 16px;
+    height: 16px;
+}
+.user-icon{
+    width: 32px;
+    height: 32px;
+}
+.filters-container-filterPage{
+    display: flex;
+    justify-content: start;
+    width: 100%;
+    gap: 30px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.bnb-House-span{
+    color: black;
+    font-size: 28px;
+    font-weight: 800;
+    cursor: pointer;
+}
+a{
+    text-decoration: none;
+}
+.right-section{
+    display: flex;
+    justify-content: end;
+    width: 100%;
+    max-width: 300px;
+    font-weight: bold;
+    color: black;
+    align-items: center;
+    gap: 20px;
+}
+.right-section>span, .left-section>span{
+    cursor: pointer;
+}
+.world-icon-container{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+.world-icon-container>svg{
+    padding: 0;
+}
+.currency-container{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+.edit-casa-info{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+    width: fit-content;
+    background-color: rgb(164, 255, 90);
+    color: black;
+    text-decoration: none;
+    padding: 6px;
+    border-radius: 6px;
+    transition: transform 0.08s ease-in-out;
+}
+.edit-casa-info p{
+    margin: 0;
+}
+.edit-casa-info:hover{
+    box-shadow: inset 0px 1px 5px rgb(121, 188, 66);
+}
+.edit-casa-info:active{
+    transform: translateX(1px);
+    transform: translateY(1px);
+}
+
+@media only screen and (max-width : 400px) {
+    .vivienda-container{
+        margin-left: 0;
+    }
+    .left-container-viv{
+        margin-left: 0;
+    }
+    .description-paragraph-container>p{
+        padding: 0px 20px;
+    }
+    .feature-container{
+        padding: 0px 20px;
+    }
+    .location-container{
+        align-items: start;
+    }
+    .span-title-descBox{
+        margin-top: 16px;
+    }
+    h1, .location-container, .span-title-descBox{
+        margin-left: 10px;
+    }
+    .svg-info-container{
+        margin-left: 0;
+    }
+    .gray-box-container{
+        justify-content: space-evenly;
+    }
+    .currency-container{
+        display: none;
+    }
+    .carousel-cell img{
+        width: 100%;
+    }
+}
